@@ -7,17 +7,42 @@ function SidebarComponent() {
       <Layout fixedDrawer>
         <Drawer title="Categories">
           <Navigation>
-            <a href="/">Job</a>
+            <a href="/">
+              <i class="fa fa-briefcase" aria-hidden="true"></i> Job
+            </a>
             <a href="/">
               <i class="fa fa-car" aria-hidden="true"></i> Vehicle{" "}
             </a>
-            <a href="/">Residence</a>
-            <a href="/">For the Home</a>
-            <a href="/">Electronics</a>
-            <a href="/">Business</a>
-            <a href="/">Personal</a>
-            <a href="/">Sparetime Hobby</a>
-            <a href="/">Training</a>
+            <a href="/">
+              <i class="fa fa-home" aria-hidden="true"></i> Residence
+            </a>
+            <a href="/">
+              {" "}
+              <i class="fa fa-home" aria-hidden="true"></i> For the Home
+            </a>
+            <a href="/">
+              {" "}
+              <i class="fa fa-mobile" aria-hidden="true"></i> Electronics
+            </a>
+            <a href="/">
+              {" "}
+              <i class="fa fa-home" aria-hidden="true"></i> Business
+            </a>
+            <a href="/">
+              {" "}
+              <i class="fa fa-home" aria-hidden="true"></i> Personal
+            </a>
+            <a href="/">
+              {" "}
+              <i class="fa  fa-soccer-ball-o" aria-hidden="true"></i> Sparetime
+              Hobby
+            </a>
+            <a href="/">
+              <i class="fa fa-mortar-board" aria-hidden="true"></i> Training
+            </a>
+            <a href="/">
+              <i class="fa  fa-plane" aria-hidden="true"></i> Travel
+            </a>
             <a href="/">Other</a>
           </Navigation>
         </Drawer>
