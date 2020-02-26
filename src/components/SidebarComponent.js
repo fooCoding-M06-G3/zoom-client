@@ -3,7 +3,7 @@ import { Layout, Navigation, Drawer, Content } from "react-mdl";
 
 function SidebarComponent() {
   return (
-    <div style={{ height: "1200px", position: "relative" }}>
+    <div className='sidebarComponent'>
       <Layout fixedDrawer>
         <Drawer title="Categories">
           <Navigation>
@@ -14,7 +14,6 @@ function SidebarComponent() {
             <a href="/">Residence</a>
             <a href="/">For the Home</a>
             <a href="/">Electronics</a>
-            <a href="/">Business</a>
             <a href="/">Personal</a>
             <a href="/">Sparetime Hobby</a>
             <a href="/">Training</a>

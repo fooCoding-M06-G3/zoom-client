@@ -1,3 +1,28 @@
+*{
+  margin:0;
+  padding:0;
+}
+body{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-x: hidden;
+}
 .App {
   text-align: center;
 }
+.mainContent{
+  display: flex;
+  width: 95vw;
+}
+.sidebarComponent{ 
+  width: 25vw;
+  height: 50vh; 
+  }
+  .mainImage{
+    width: 70vw;
+  }
+  .mainImage img{
+    width: 50vw;
+  }
