@@ -3,7 +3,7 @@ import { Layout, Navigation, Drawer, Content, Header, Textfield } from 'react-md
 
 function Navbar() {
   return (
-    <div style={{ height: '50px', position: 'relative' }}>
+    <div style={{ height: '10vh', position: 'relative' }}>
       <Layout fixedHeader>
         <Header
           title={
@@ -14,7 +14,7 @@ function Navbar() {
         >
           <Textfield
             value="What're you looking for?"
-            onChange={() => {}}
+            onChange={() => { }}
             label="Search"
             expandable
             expandableIcon="search"
