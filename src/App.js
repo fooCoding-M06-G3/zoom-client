@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 // import { Layout, Header, Navigation, Drawer, Content } from "react-mdl";
-import SidebarComponent from "./components/SidebarComponent";
+import SidebarComponent from "./components/SidebarComponent/Sidebar";
 import "react-mdl/extra/material.css";
 import "react-mdl/extra/material.js";
 

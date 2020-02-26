@@ -3,7 +3,7 @@ import { Layout, Navigation, Drawer, Content } from "react-mdl";
 
 function SidebarComponent() {
   return (
-    <div style={{ height: "1200px", position: "relative" }}>
+    <div style={{ height: "600px", position: "relative" }}>
       <Layout fixedDrawer>
         <Drawer title="Categories">
           <Navigation>
@@ -18,7 +18,7 @@ function SidebarComponent() {
             </a>
             <a href="/">
               {" "}
-              <i class="fa fa-home" aria-hidden="true"></i> For the Home
+              <i class="fa fa-couch" aria-hidden="true"></i> For the Home
             </a>
             <a href="/">
               {" "}
@@ -26,22 +26,21 @@ function SidebarComponent() {
             </a>
             <a href="/">
               {" "}
-              <i class="fa fa-home" aria-hidden="true"></i> Business
+              <i class="fas fa-business-time" aria-hidden="true"></i> Business
             </a>
             <a href="/">
               {" "}
-              <i class="fa fa-home" aria-hidden="true"></i> Personal
+              <i class="fa fa-tshirt" aria-hidden="true"></i> Personal
             </a>
             <a href="/">
               {" "}
-              <i class="fa  fa-soccer-ball-o" aria-hidden="true"></i> Sparetime
-              Hobby
+              <i class="fa  fa-futbol" aria-hidden="true"></i> Sparetime Hobby
             </a>
             <a href="/">
-              <i class="fa fa-mortar-board" aria-hidden="true"></i> Training
+              <i class="fas fa-book-reader" aria-hidden="true"></i> Training
             </a>
             <a href="/">
-              <i class="fa  fa-plane" aria-hidden="true"></i> Travel
+              <i class="fa  fa-plane-departure" aria-hidden="true"></i> Travel
             </a>
             <a href="/">Other</a>
           </Navigation>
