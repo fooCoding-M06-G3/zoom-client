@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Layout, Navigation, Drawer, Content, Header, Textfield } from 'react-mdl';
+import React from 'react';
+import { Layout, Navigation, Header, Textfield } from 'react-mdl';
 
 function Navbar() {
   return (
@@ -14,7 +14,7 @@ function Navbar() {
         >
           <Textfield
             value="What're you looking for?"
-            onChange={() => { }}
+            onChange={() => {}}
             label="Search"
             expandable
             expandableIcon="search"
