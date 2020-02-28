@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Layout, Navigation, Header, Textfield } from 'react-mdl';
 import { NavLink } from 'react-router-dom';
 
