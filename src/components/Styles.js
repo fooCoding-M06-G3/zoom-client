@@ -6,7 +6,10 @@ const useStyles = makeStyles(theme => ({
   //Navbar
   navbar: {
     display: 'flex',
-    height: '8vh',
+    height: '10vh',
+    textAlign: 'center',
+    alignContent: 'center',
+    justifyContent: 'center'
   },
   // toolbarNavLinks: {
   //   display: 'flex',
@@ -47,11 +50,12 @@ const useStyles = makeStyles(theme => ({
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
+    backgroundColor: '#ede7f6',
     marginLeft: '20%',
     marginTop: 'auto',
     marginBottom: 'auto',
     width: '50%',
+    height: '80%'
 
   },
   searchIcon: {
@@ -62,15 +66,15 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    color: '#000000'
   },
   inputRoot: {
-    color: 'inherit',
+    width: '80%',
+    padding: 8,
+
   },
   inputInput: {
-    padding: 10,
     width: '100%',
-    height: '5vh',
-    color: 'secondary'
 
   },
   icon: {

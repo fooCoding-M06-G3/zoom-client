@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import useStyles from '../Styles';
-import { orange } from '@material-ui/core/colors';
-import { AppBar, Typography, Toolbar, MenuItem, InputBase, Button } from '@material-ui/core'
+import { orange, yellow } from '@material-ui/core/colors';
+import { AppBar, Typography, Toolbar, MenuItem, Button, InputBase } from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search';
 
 function Navbar({ title, navLink1, navLink2 }) {
@@ -20,9 +20,23 @@ function Navbar({ title, navLink1, navLink2 }) {
     },
   }))(Button);
 
+  const SearchInput = withStyles(() => ({
+    root: {
+      color: '#333333'
+    }
+  }
+  ))(InputBase);
+
+  const TopNav = withStyles(() => ({
+    root: {
+      backgroundColor: '#1C2833'
+    }
+  }
+  ))(AppBar);
+
   return (
 
-    <AppBar elevation={1} position='fixed' className={classes.navbar} >
+    <TopNav elevation={1} position='fixed' className={classes.navbar} >
 
       <div style={{ display: 'flex', flexDirection: 'row' }}>
 
@@ -36,7 +50,7 @@ function Navbar({ title, navLink1, navLink2 }) {
           <div className={classes.searchIcon}>
             <SearchIcon />
           </div>
-          <InputBase
+          <SearchInput
             placeholder="What are you looking for?"
             classes={{
               root: classes.inputRoot,
@@ -52,7 +66,7 @@ function Navbar({ title, navLink1, navLink2 }) {
               <Typography><Link to='/signin' className={classes.navLink}>{navLink1}</Link></Typography>
             </MenuItem>
             <MenuItem className={classes.menuitem}>
-              <ColorButton variant="contained" color="secondary" >
+              <ColorButton >
                 <Link to='/additem' className={classes.navLink}>{navLink2}</Link>
               </ColorButton>
             </MenuItem>
@@ -60,10 +74,7 @@ function Navbar({ title, navLink1, navLink2 }) {
         </div>
 
       </div>
-
-
-
-    </AppBar >
+    </TopNav >
 
   );
 }
