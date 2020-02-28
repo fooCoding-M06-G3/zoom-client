@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Layout, Navigation, Drawer, Content, Header, Textfield } from 'react-mdl';
+import React from 'react';
+import { Layout, Navigation, Header, Textfield } from 'react-mdl';
 
 function Navbar() {
   return (
@@ -10,7 +10,8 @@ function Navbar() {
             <span>
               <strong>Zoom</strong>
             </span>
-          } >
+          }
+        >
           <Textfield
             value="What're you looking for?"
             onChange={() => { }}
