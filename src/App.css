@@ -11,8 +11,17 @@ body{
 }
 .App {
   text-align: center;
+  height: '10vh',
+
 }
 .mainContent{
   margin-top: 10vh;
   text-align: center;
+}
+.main-image{
+  height: 60vh
+}
+.main-image img{
+  height: 100%;
+  width: 100%;
 }
