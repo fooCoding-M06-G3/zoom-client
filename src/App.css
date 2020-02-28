@@ -1,22 +1,26 @@
-*{
-  margin:0;
-  padding:0;
+* {
+  margin: 0;
+  padding: 0;
 }
-body{
-  margin:0;
-  padding:0;
+
+body {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   max-width: 100%;
   overflow-x: hidden;
 }
-.mainContent{
-  margin-top: 10vh;
+
+.mainContent {
+  /* margin-top: 10vh; */
   text-align: center;
 }
-.main-image{
-  height: 60vh
+
+.main-image {
+  height: 85vh;
 }
-.main-image img{
+
+.main-image img {
   height: 90%;
   width: 100%;
 }

@@ -1,0 +1,32 @@
+.avatarstyle img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.avatarstyle {
+    display: inline-block;
+    margin: .70rem;
+    padding: .90rem;
+    font-size: smaller;
+    color: #808080;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.mainpage {
+    width: 90%;
+    height: 100vh;
+    margin: auto;
+    /* background-color: black; */
+}
+
+.mainpage h1 {
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+/* .image {
+    border-radius: 50%;
+    width: 100px;
+} */
