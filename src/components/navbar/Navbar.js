@@ -1,12 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import useStyles from '../Styles'
-import { AppBar, Typography, Toolbar, MenuItem, InputBase } from '@material-ui/core'
+import { withStyles } from '@material-ui/core/styles';
+import useStyles from '../Styles';
+import { orange } from '@material-ui/core/colors';
+import { AppBar, Typography, Toolbar, MenuItem, InputBase, Button } from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search';
 
 function Navbar({ title, navLink1, navLink2 }) {
 
   const classes = useStyles();
+
+
+  const ColorButton = withStyles(() => ({
+    root: {
+      backgroundColor: orange[700],
+      '&:hover': {
+        backgroundColor: orange[400],
+      },
+    },
+  }))(Button);
 
   return (
 
@@ -30,17 +42,19 @@ function Navbar({ title, navLink1, navLink2 }) {
               root: classes.inputRoot,
               input: classes.inputInput,
             }}
-            inputProps={{ 'aria-label': 'search', color: 'primary' }}
+            inputProps={{ 'aria-label': 'search' }}
           />
         </div>
 
         <div style={{ display: 'flex' }}>
           <Toolbar className={classes.toolbarNavlinks}>
             <MenuItem className={classes.menuitem}>
-              <Typography><Link to='/products' className={classes.navLink}>{navLink1}</Link></Typography>
+              <Typography><Link to='/signin' className={classes.navLink}>{navLink1}</Link></Typography>
             </MenuItem>
             <MenuItem className={classes.menuitem}>
-              <Typography ><Link to='/products' className={classes.navLink}>{navLink2}</Link></Typography>
+              <ColorButton variant="contained" color="secondary" >
+                <Link to='/additem' className={classes.navLink}>{navLink2}</Link>
+              </ColorButton>
             </MenuItem>
           </Toolbar>
         </div>
