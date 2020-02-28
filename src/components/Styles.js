@@ -4,21 +4,6 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
 
   //Navbar
-  navbar: {
-    display: 'flex',
-    height: '10vh',
-    textAlign: 'center',
-    alignContent: 'center',
-    justifyContent: 'center'
-  },
-  // toolbarNavLinks: {
-  //   display: 'flex',
-  //   textAlign: 'left',
-  //   flexDirection: 'row',
-  //   marginLeft: '10%',
-  //   width: '10%'
-
-  // },
   menuitem: {
     "&:hover": {
       backgroundColor: 'white'
@@ -26,10 +11,9 @@ const useStyles = makeStyles(theme => ({
   },
 
   title: {
-    color: 'white'
+    color: 'white',
   },
   titleText: {
-    fontSize: '1.6em',
     fontStyle: 'bold',
     fontWeight: 800,
   },
@@ -37,7 +21,7 @@ const useStyles = makeStyles(theme => ({
   link: {
     textDecoration: 'none',
     color: 'white',
-    fontSize: '1.6em',
+    fontSize: '2em',
 
   },
   navLink: {
@@ -51,11 +35,10 @@ const useStyles = makeStyles(theme => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
     backgroundColor: '#ede7f6',
-    marginLeft: '20%',
     marginTop: 'auto',
     marginBottom: 'auto',
     width: '50%',
-    height: '80%'
+    height: '60%'
 
   },
   searchIcon: {
@@ -70,13 +53,15 @@ const useStyles = makeStyles(theme => ({
   },
   inputRoot: {
     width: '80%',
-    padding: 8,
+    height: '95%',
+    marginLeft: '10%',
 
   },
   inputInput: {
-    width: '100%',
-
+    width: '80%',
+    margin: 'auto',
   },
+
   icon: {
     height: '100%',
   },
