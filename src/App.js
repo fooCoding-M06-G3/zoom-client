@@ -9,10 +9,9 @@ import AddItemScreen from "./screens/AddItemScreen";
 function App() {
   return (
     <Router>
-      <div className="App">
-        <Navbar title='ZOOM' navLink1='Sign In' navLink2='Start Selling' />
 
-      </div>
+      <Navbar title='ZOOM' navLink1='Sign In' navLink2='Start Selling' />
+
 
       <div className='mainContent'>
         <Switch>
