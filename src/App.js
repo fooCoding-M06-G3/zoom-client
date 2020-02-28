@@ -1,33 +1,34 @@
-import React from "react";
-import "./App.css";
+import React from 'react';
+import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Navbar from "./components/navbar/Navbar";
-import HomeScreen from "./screens/HomeScreen";
-import SignInScreen from "./screens/SignInScreen";
-import AddItemScreen from "./screens/AddItemScreen";
+import Navbar from './components/Navbar';
+import HomeScreen from './screens/HomeScreen';
+import SignInScreen from './screens/SignInScreen';
+import SignUpScreen from './screens/SignUpScreen';
+import AddItemScreen from './screens/AddItemScreen';
 
 function App() {
   return (
     <Router>
+      <Navbar title="ZOOM" navLink1="Sign In" navLink2="Start Selling" />
 
-      <Navbar title='ZOOM' navLink1='Sign In' navLink2='Start Selling' />
-
-
-      <div className='mainContent'>
+      <div className="mainContent">
         <Switch>
-          <Route path='/signin'>
+          <Route exact path="/signin">
             <SignInScreen />
           </Route>
-          <Route path='/additem'>
+          <Route exact path="/signup">
+            <SignUpScreen />
+          </Route>
+          <Route exact path="/additem">
             <AddItemScreen />
           </Route>
-          <Route path='/'>
+          <Route exact path="/">
             <HomeScreen />
           </Route>
         </Switch>
       </div>
     </Router>
-
   );
 }
 
