@@ -1,6 +1,5 @@
 import React from "react";
 import "./AvatarStyle.css";
-// import "tachyons";
 
 import Avatarlist from "./AvatarList";
 
