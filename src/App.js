@@ -1,20 +1,26 @@
 import React from "react";
 import "./App.css";
-// import { Layout, Header, Navigation, Drawer, Content } from "react-mdl";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from "./components/navbar/Navbar";
-import SidebarComponent from "./components/SidebarComponent/Sidebar";
-import "react-mdl/extra/material.css";
-import "react-mdl/extra/material.js";
+import HomeScreen from "./screens/HomeScreen";
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <div className='mainContent'>
-        <SidebarComponent />
-        <HomeScreen />
+    <Router>
+      <div className="App">
+        <Navbar title='ZOOM' navLink1='Sign In' navLink2='Start Selling' />
+
       </div>
-    </div>
+
+      <div className='mainContent'>
+        <Switch>
+          <Route path='/'>
+            <HomeScreen />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+
   );
 }
 

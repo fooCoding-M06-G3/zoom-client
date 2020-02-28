@@ -12,17 +12,3 @@ body{
 .App {
   text-align: center;
 }
-.mainContent{
-  display: flex;
-  width: 95vw;
-}
-.sidebarComponent{ 
-  width: 25vw;
-  height: 50vh; 
-  }
-  .mainImage{
-    width: 70vw;
-  }
-  .mainImage img{
-    width: 50vw;
-  }
