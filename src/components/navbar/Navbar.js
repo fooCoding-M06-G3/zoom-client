@@ -10,8 +10,7 @@ function Navbar() {
             <span>
               <strong>Zoom</strong>
             </span>
-          }
-        >
+          } >
           <Textfield
             value="What're you looking for?"
             onChange={() => { }}
