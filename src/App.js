@@ -3,6 +3,8 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from "./components/navbar/Navbar";
 import HomeScreen from "./screens/HomeScreen";
+import SignInScreen from "./screens/SignInScreen";
+import AddItemScreen from "./screens/AddItemScreen";
 
 function App() {
   return (
@@ -14,6 +16,12 @@ function App() {
 
       <div className='mainContent'>
         <Switch>
+          <Route path='/signin'>
+            <SignInScreen />
+          </Route>
+          <Route path='/additem'>
+            <AddItemScreen />
+          </Route>
           <Route path='/'>
             <HomeScreen />
           </Route>

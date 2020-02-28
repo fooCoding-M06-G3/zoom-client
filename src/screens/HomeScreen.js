@@ -2,7 +2,6 @@ import React from 'react'
 
 export default function HomeScreen() {
   return (
-    <div className='mainImage'>
-    </div>
+    <h1>Home</h1>
   )
 }
