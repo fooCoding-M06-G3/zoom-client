@@ -16,16 +16,13 @@ body {
   text-align: center;
 }
 
-.main-image {
-  height: 85vh;
-}
 
 .main-image img {
-  height: 60vh;
   width: 100%;
 }
-.productContent{
-  margin:auto;
+
+.productContent {
+  margin: auto;
   width: 70%;
   display: flex;
   flex-wrap: wrap;
