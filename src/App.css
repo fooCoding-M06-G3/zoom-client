@@ -21,6 +21,14 @@ body {
 }
 
 .main-image img {
-  height: 90%;
+  height: 60vh;
   width: 100%;
+}
+.productContent{
+  margin:auto;
+  width: 70%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  text-align: center;
 }
