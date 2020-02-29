@@ -1,6 +1,7 @@
 import React from 'react';
 import { Layout, Navigation, Header, Textfield } from 'react-mdl';
 import { NavLink } from 'react-router-dom';
+import SearchBar from './SearchBar';
 
 function Navbar() {
   return (
@@ -14,13 +15,7 @@ function Navbar() {
           }
         >
           <Navigation>
-            <Textfield
-              value="What're you looking for?"
-              onChange={() => {}}
-              label="Search"
-              expandable
-              expandableIcon="search"
-            />
+            <SearchBar />
             <Textfield
               value="Which city?"
               onChange={() => {}}
