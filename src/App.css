@@ -26,9 +26,15 @@ body {
 }
 .productContent{
   margin:auto;
-  width: 70%;
+  width: 80%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   text-align: center;
 }
+.itemText{
+   width: 50%; 
+   color: #303030;
+   padding: 10px 0; 
+   font-size: 1.2em;
+  }
