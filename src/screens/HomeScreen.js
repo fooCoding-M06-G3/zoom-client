@@ -11,6 +11,7 @@ export default function HomeScreen() {
         alt="mainImage"
       />
       <Avatar />
+      <h4>Recently Published</h4>
       <ProductScreen />
     </div>
   );

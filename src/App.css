@@ -20,12 +20,17 @@ body {
 .main-image img {
   width: 100%;
 }
-
-.productContent {
-  margin: auto;
-  width: 70%;
+.productContent{
+  margin:auto;
+  width: 80%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   text-align: center;
 }
+.itemText{
+   width: 50%; 
+   color: #303030;
+   padding: 10px 0; 
+   font-size: 1.2em;
+  }

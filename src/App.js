@@ -8,6 +8,8 @@ import SignUpScreen from './screens/SignUpScreen';
 import AddItemScreen from './screens/AddItemScreen';
 
 function App() {
+
+
   return (
     <Router>
       <Navbar />
