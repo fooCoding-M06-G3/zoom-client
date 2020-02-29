@@ -15,18 +15,5 @@
 
 .mainpage {
     width: 90%;
-    height: 100vh;
     margin: auto;
-    /* background-color: black; */
 }
-
-.mainpage h1 {
-    margin: 0;
-    padding: 20px;
-    text-align: center;
-}
-
-/* .image {
-    border-radius: 50%;
-    width: 100px;
-} */
