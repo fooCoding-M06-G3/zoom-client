@@ -1,27 +1,26 @@
 .avatarstyle img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    box-shadow: 0 4px 8px 0 rgba(99, 98, 98, 0.2),
-        0 6px 20px 0 rgba(99, 98, 98, 0.2);
-
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px 0 rgba(99, 98, 98, 0.2),
+    0 6px 18px 0 rgba(99, 98, 98, 0.2);
 }
 
 .avatarstyle:hover {
-    transform: scale(1.3);
-
+  transform: scale(1.3);
 }
 
 .avatarstyle {
-    display: inline-block;
-    margin: .70rem;
-    padding: .90rem;
-    font-size: smaller;
-    color: #808080;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  display: inline-block;
+  margin: 0.7rem;
+  padding: 0.9rem;
+  font-size: smaller;
+  color: #808080;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .mainpage {
-    width: 90%;
-    margin: auto;
+  width: 90%;
+  margin: auto;
 }
