@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
-import InputField from './InputField';
-import Button from '@material-ui/core/Button';
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import React, { useState, useEffect } from 'react';
+import { Redirect } from 'react-router-dom'
+import { Button, Typography, TextField } from '@material-ui/core';
+import { ValidatorForm } from 'react-material-ui-form-validator';
 import { makeStyles } from '@material-ui/core/styles';
-import grey from '@material-ui/core/colors/grey';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -18,60 +17,98 @@ const useStyles = makeStyles(theme => ({
   },
   submitButton: {
     margin: '40px',
-    backgroundColor: grey[900],
+    backgroundColor: '#333',
     color: 'white',
+    '&:hover': {
+      backgroundColor: '#FFFFFF',
+      color: '#000',
+      border: '1px solid #CCC'
+    }
   },
+  error: {
+    marginTop: 20,
+    color: 'red'
+  }
 }));
 
 function SignIn() {
-  const classes = useStyles();
+
+
   const [values, setValues] = useState({
     email: '',
     password: '',
+    error: false,
+    id: false
   });
+
   const handleOnChange = event => {
-    console.dir(event.target.id);
+
     const { id, value } = event.target;
     let newValues = { ...values, [id]: value };
     setValues(newValues);
-    console.dir(newValues);
+
   };
+
   const handleSubmit = event => {
     event.preventDefault();
+    fetch(`/getuser?email=${values.email}&password=${values.password}`)
+      .then(res => res.json())
+      .then(result => {
+        console.log(result[0])
+        if (result[0] === undefined) {
+          setValues({ error: true })
+        } else {
+          localStorage.setItem('userId', result[0].userid);
+          setValues({ id: true })
+        }
+      })
   };
+
+  const classes = useStyles();
+
+
   return (
-    <fragment>
-      <ValidatorForm className={classes.root} onSubmit={event => handleSubmit(event)}>
-        <h4 className={classes.title}>Sign in</h4>
-        <InputField
-          type={'email'}
-          id={'email'}
-          label={'email'}
-          name={'email'}
-          onChange={handleOnChange}
-          validators={['required', 'isEmail']}
-          errorMessages={['this field is required', 'email is not valid']}
-        >
-          {'Email'}
-        </InputField>
-        <br />
-        <InputField
-          type={'password'}
-          id={'password'}
-          name={'password'}
-          label={'password'}
-          onChange={handleOnChange}
-          validators={['required']}
-          errorMessages={['this field is required']}
-        >
-          {'Password'}
-        </InputField>
-        <br />
-        <Button type="submit" variant="filled" variant="outlined" className={classes.submitButton}>
-          Sign in
-        </Button>
-      </ValidatorForm>
-    </fragment>
+
+    localStorage.getItem('userId') !== null ? <Redirect to='/' /> :
+
+      <div style={{
+        marginTop: '10vh', width: '20%', marginLeft: 'auto', marginRight: 'auto'
+      }}>
+
+        <ValidatorForm className={classes.root} onSubmit={event => handleSubmit(event)} >
+          <Typography variant='h4' style={{ marginBottom: 20 }}>Sign In</Typography>
+          {values.error && <Typography className={classes.error}>Email/Password Invalid</Typography>}
+          <TextField
+            variant='outlined'
+            type='email'
+            id='email'
+            placeholder='Email'
+            value={values.email}
+            onChange={handleOnChange}
+            validators={['required', 'isEmail']}
+            errorMessages={['this field is required', 'email is not valid']}
+          >
+
+          </TextField>
+          <br />
+          <TextField
+            variant='outlined'
+            type='password'
+            id='password'
+            placeholder='Password'
+            value={values.password}
+            onChange={handleOnChange}
+            validators={['required']}
+            errorMessages={['this field is required']}
+          >
+
+          </TextField>
+          <br />
+          <Button type="submit" variant="filled outlined" className={classes.submitButton}>
+            Sign in
+          </Button>
+        </ValidatorForm >
+      </div >
   );
 }
 
