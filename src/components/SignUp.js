@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import InputField from './InputField';
-import Button from '@material-ui/core/Button';
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import { Redirect } from 'react-router-dom'
+import { Button, Typography } from '@material-ui/core';
+import { ValidatorForm } from 'react-material-ui-form-validator';
 import { makeStyles } from '@material-ui/core/styles';
-import grey from '@material-ui/core/colors/grey';
+import { grey } from '@material-ui/core/colors';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -61,86 +62,87 @@ function SignUp() {
     event.preventDefault();
   };
   return (
-    <div>
-      <ValidatorForm className={classes.root} onSubmit={event => handleSubmit(event)}>
-        <h4 className={classes.title}>Become a member</h4>
-        <InputField
-          type={'email'}
-          id={'email'}
-          label={'email'}
-          name={'email'}
-          value={'email'}
-          onChange={handleOnChange}
-          validators={['required', 'isEmail']}
-          errorMessages={['this field is required', 'email is not valid']}
-          className={classes.inputfield}
-        >
-          {'Email'}
-        </InputField>
-        <InputField
-          type={'password'}
-          id={'password'}
-          name={'password'}
-          value={'password'}
-          label={'password'}
-          onChange={handleOnChange}
-          validators={['required']}
-          errorMessages={['this field is required']}
-          className={classes.inputfield}
-        >
-          {'Password'}
-        </InputField>
-        <br />
-        <InputField
-          type={'username'}
-          id={'username'}
-          name={'username'}
-          value={'username'}
-          label={'user name'}
-          onChange={handleOnChange}
-        >
-          {'Username'}
-        </InputField>
-        <InputField
-          type="password"
-          name="repeatpassword"
-          value={'repeatpassword'}
-          id={'repeatpassword'}
-          label="Repeat password"
-          onChange={handleOnChange}
-          validators={['isPasswordMatch', 'required']}
-          errorMessages={['password mismatch', 'this field is required']}
-        >
-          {'Confirm Password'}
-        </InputField>
-        <br />
+    localStorage.getItem('userID') ? <Redirect to='/'></Redirect> :
+      <div style={{
+        marginTop: '10vh', width: '50%', marginLeft: 'auto', marginRight: 'auto'
+      }}>
+        <ValidatorForm className={classes.root} onSubmit={event => handleSubmit(event)}>
+          <Typography variant='h4'>Register Your Account</Typography>
+          <InputField
+            type={'email'}
+            id={'email'}
+            label={'email'}
+            value={'email'}
+            onChange={handleOnChange}
+            validators={['required', 'isEmail']}
+            errorMessages={['this field is required', 'email is not valid']}
+            className={classes.inputfield}
+          >
+            {'Email'}
+          </InputField>
+          <InputField
+            type={'password'}
+            id={'password'}
+            value={'password'}
+            label={'password'}
+            onChange={handleOnChange}
+            validators={['required']}
+            errorMessages={['this field is required']}
+            className={classes.inputfield}
+          >
+            {'Password'}
+          </InputField>
+          <br />
+          <InputField
+            type={'username'}
+            id={'username'}
+            name={'username'}
+            value={'username'}
+            label={'user name'}
+            onChange={handleOnChange}
+          >
+            {'Username'}
+          </InputField>
+          <InputField
+            type="password"
+            name="repeatpassword"
+            value={'repeatpassword'}
+            id={'repeatpassword'}
+            label="Repeat password"
+            onChange={handleOnChange}
+            validators={['isPasswordMatch', 'required']}
+            errorMessages={['password mismatch', 'this field is required']}
+          >
+            {'Confirm Password'}
+          </InputField>
+          <br />
 
-        <InputField
-          type={'phone'}
-          name={'phone'}
-          value={'phone'}
-          id={'phone'}
-          label={'phone number'}
-          onChange={handleOnChange}
-        >
-          {'Phone Number'}
-        </InputField>
-        <InputField
-          type={'city'}
-          name={'city'}
-          id={'city'}
-          value={'city'}
-          label={'city'}
-          onChange={handleOnChange}
-        >
-          {'City'}
-        </InputField>
-        <br />
-        <Button type="submit" variant="outlined" className={classes.submitButton}>
-          Create new account
+          <InputField
+            type={'phone'}
+            name={'phone'}
+            value={'phone'}
+            id={'phone'}
+            label={'phone number'}
+            onChange={handleOnChange}
+          >
+            {'Phone Number'}
+          </InputField>
+          <InputField
+            type={'city'}
+            name={'city'}
+            id={'city'}
+            value={'city'}
+            label={'city'}
+            onChange={handleOnChange}
+          >
+            {'City'}
+          </InputField>
+          <br />
+          <Button type="submit" variant="outlined" className={classes.submitButton}>
+            Create new account
         </Button>
-      </ValidatorForm>
-    </div>
+        </ValidatorForm>
+      </div>
   );
 }
 
