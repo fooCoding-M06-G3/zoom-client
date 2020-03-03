@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom'
 import { Button, Typography, TextField } from '@material-ui/core';
 import { ValidatorForm } from 'react-material-ui-form-validator';
@@ -38,6 +38,7 @@ function SignIn() {
     email: '',
     password: '',
     error: false,
+    id: false
   });
 
   const handleOnChange = event => {
@@ -58,6 +59,7 @@ function SignIn() {
           setValues({ error: true })
         } else {
           localStorage.setItem('userId', result[0].userid);
+          setValues({ id: true })
         }
       })
   };
@@ -67,14 +69,14 @@ function SignIn() {
 
   return (
 
-    localStorage.getItem('userID') !== null ? <Redirect to='/' /> :
+    localStorage.getItem('userId') !== null ? <Redirect to='/' /> :
 
       <div style={{
         marginTop: '10vh', width: '20%', marginLeft: 'auto', marginRight: 'auto'
       }}>
 
-        < ValidatorForm className={classes.root} onSubmit={event => handleSubmit(event)} >
-          <Typography variant='h4'>Sign In</Typography>
+        <ValidatorForm className={classes.root} onSubmit={event => handleSubmit(event)} >
+          <Typography variant='h4' style={{ marginBottom: 20 }}>Sign In</Typography>
           {values.error && <Typography className={classes.error}>Email/Password Invalid</Typography>}
           <TextField
             variant='outlined'
@@ -104,7 +106,7 @@ function SignIn() {
           <br />
           <Button type="submit" variant="filled outlined" className={classes.submitButton}>
             Sign in
-        </Button>
+          </Button>
         </ValidatorForm >
       </div >
   );
