@@ -17,12 +17,12 @@ const useStyles = makeStyles(theme => ({
   },
   submitButton: {
     margin: '40px',
-    backgroundColor: '#333',
+    backgroundColor: '#005b96',
     color: 'white',
     '&:hover': {
       backgroundColor: '#FFFFFF',
       color: '#000',
-      border: '1px solid #CCC'
+      border: '1px solid #03396c'
     }
   },
   error: {
