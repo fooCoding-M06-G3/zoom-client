@@ -1,42 +1,114 @@
-import React, { useState } from 'react';
-import InputField from './InputField';
+import React, { useState, useEffect } from 'react';
+import { Redirect } from 'react-router-dom'
+import { Button, Typography, TextField } from '@material-ui/core';
+import { ValidatorForm } from 'react-material-ui-form-validator';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: '100%',
+    },
+  },
+  title: {
+    margin: '25px',
+    fontSize: '25px',
+  },
+  submitButton: {
+    margin: '40px',
+    backgroundColor: '#005b96',
+    color: 'white',
+    '&:hover': {
+      backgroundColor: '#FFFFFF',
+      color: '#000',
+      border: '1px solid #03396c'
+    }
+  },
+  error: {
+    marginTop: 20,
+    color: 'red'
+  }
+}));
 
 function SignIn() {
+
+
   const [values, setValues] = useState({
     email: '',
     password: '',
+    error: false,
+    id: false
   });
+
   const handleOnChange = event => {
-    console.dir(event.target.id);
+
     const { id, value } = event.target;
     let newValues = { ...values, [id]: value };
     setValues(newValues);
-    console.dir(newValues);
+
   };
+
   const handleSubmit = event => {
     event.preventDefault();
+    fetch(`/getuser?email=${values.email}&password=${values.password}`)
+      .then(res => res.json())
+      .then(result => {
+        console.log(result[0])
+        if (result[0] === undefined) {
+          setValues({ error: true })
+        } else {
+          localStorage.setItem('userId', result[0].userid);
+          setValues({ id: true })
+        }
+      })
   };
+
+  const classes = useStyles();
+
+
   return (
-    <fragment>
-      <form onSubmit={event => handleSubmit(event)}>
-        <h4>Sign in</h4>
-        <InputField
-          type={'email'}
-          id={'email'}
-          for={'email'}
-          placeholder={'email'}
-          onChange={handleOnChange}
-        >
-          {'Email'}
-        </InputField>
-        <br />
-        <InputField type={'password'} id={'password'} for={'password'} onChange={handleOnChange}>
-          {'Password'}
-        </InputField>
-        <br />
-        <input type="submit" value="Sign in" />
-      </form>
-    </fragment>
+
+    localStorage.getItem('userId') !== null ? <Redirect to='/' /> :
+
+      <div style={{
+        marginTop: '20vh', width: '20%', marginLeft: 'auto', marginRight: 'auto'
+      }}>
+
+        <ValidatorForm className={classes.root} onSubmit={event => handleSubmit(event)} >
+          <Typography variant='h4' style={{ marginBottom: 20 }}>Sign In</Typography>
+          {values.error && <Typography className={classes.error}>Email/Password Invalid</Typography>}
+          <TextField
+            variant='outlined'
+            type='email'
+            id='email'
+            placeholder='Email'
+            value={values.email}
+            onChange={handleOnChange}
+            validators={['required', 'isEmail']}
+            errorMessages={['this field is required', 'email is not valid']}
+          >
+
+          </TextField>
+          <br />
+          <TextField
+            variant='outlined'
+            type='password'
+            id='password'
+            placeholder='Password'
+            value={values.password}
+            onChange={handleOnChange}
+            validators={['required']}
+            errorMessages={['this field is required']}
+          >
+
+          </TextField>
+          <br />
+          <Button type="submit" variant="filled outlined" className={classes.submitButton}>
+            Sign in
+          </Button>
+        </ValidatorForm >
+      </div >
   );
 }
 
