@@ -72,7 +72,7 @@ function SignIn() {
     localStorage.getItem('userId') !== null ? <Redirect to='/' /> :
 
       <div style={{
-        marginTop: '10vh', width: '20%', marginLeft: 'auto', marginRight: 'auto'
+        marginTop: '20vh', width: '20%', marginLeft: 'auto', marginRight: 'auto'
       }}>
 
         <ValidatorForm className={classes.root} onSubmit={event => handleSubmit(event)} >
