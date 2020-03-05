@@ -2,6 +2,7 @@ import React from "react";
 import "../App.css";
 import Avatar from "../components/avatarcomponent/Avatar";
 import ProductScreen from "./ProductScreen";
+import { Typography } from '@material-ui/core'
 
 export default function HomeScreen() {
   return (
@@ -11,7 +12,7 @@ export default function HomeScreen() {
         alt="mainImage"
       />
       <Avatar />
-      <h4>Recently Published</h4>
+      <Typography variant='h3'> Recently Published </Typography>
       <ProductScreen />
     </div>
   );
