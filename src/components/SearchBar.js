@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 
@@ -12,6 +12,8 @@ const useStyles = makeStyles(theme => ({
     '&:hover': {
       backgroundColor: fade(theme.palette.common.white, 0.25),
     },
+    marginLeft: 0,
+    marginRight: theme.spacing(5),
 
     [theme.breakpoints.up('sm')]: {
       width: 'auto',
@@ -43,23 +45,9 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const SearchBar = props => {
-  const doSearch = query => {
-    const request = fetch('/queryProducts', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ query: query }),
-    });
-    request.then(response => {
-      response.json().then(json => {
-        console.log(json);
-      });
-    });
-  };
   const onChange = event => {
     const query = event.target.value;
-    doSearch(query);
+    props.onChange(query);
   };
   const classes = useStyles();
   return (
