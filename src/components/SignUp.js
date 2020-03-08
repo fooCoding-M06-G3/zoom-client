@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import InputField from './InputField';
 import { Redirect } from 'react-router-dom'
-import { Button, Typography } from '@material-ui/core';
+import { Button, Typography, TextField } from '@material-ui/core';
 import { ValidatorForm } from 'react-material-ui-form-validator';
 import { makeStyles } from '@material-ui/core/styles';
-import { grey } from '@material-ui/core/colors';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -19,131 +17,115 @@ const useStyles = makeStyles(theme => ({
   },
   submitButton: {
     margin: '40px',
-    backgroundColor: grey[900],
+    backgroundColor: '#005b96',
     color: 'white',
+    '&:hover': {
+      backgroundColor: '#FFFFFF',
+      color: '#000',
+      border: '1px solid #03396c'
+    }
   },
+  error: {
+    marginTop: 20,
+    color: 'red'
+  }
 }));
 
-function SignUp() {
-  const classes = useStyles();
+export default function SignUp() {
+
 
   const [values, setValues] = useState({
     email: '',
     password: '',
-    repeatpassword: '',
-    username: '',
-    phone: 0,
-    city: '',
+    tel: '',
+    error: false,
+    msg: ''
   });
 
-  useEffect(() => {
-    // custom rule will have name 'isPasswordMatch'
-    ValidatorForm.addValidationRule('isPasswordMatch', value => {
-      if (value !== values.password) {
-        console.log('validation');
-        return false;
-      }
-      return true;
-    });
-    return () => {
-      // remove rule when it is not needed
-      ValidatorForm.removeValidationRule('isPasswordMatch');
-      console.log('removevalidation');
-    };
-  }, []);
-
   const handleOnChange = event => {
-    console.dir(event.target.id);
+
     const { id, value } = event.target;
     let newValues = { ...values, [id]: value };
     setValues(newValues);
+
   };
+
   const handleSubmit = event => {
     event.preventDefault();
-  };
-  return (
-    localStorage.getItem('userID') ? <Redirect to='/'></Redirect> :
-      <div style={{
-        marginTop: '10vh', width: '50%', marginLeft: 'auto', marginRight: 'auto'
-      }}>
-        <ValidatorForm className={classes.root} onSubmit={event => handleSubmit(event)}>
-          <Typography variant='h4'>Register Your Account</Typography>
-          <InputField
-            type={'email'}
-            id={'email'}
-            label={'email'}
-            value={'email'}
-            onChange={handleOnChange}
-            validators={['required', 'isEmail']}
-            errorMessages={['this field is required', 'email is not valid']}
-            className={classes.inputfield}
-          >
-            {'Email'}
-          </InputField>
-          <InputField
-            type={'password'}
-            id={'password'}
-            value={'password'}
-            label={'password'}
-            onChange={handleOnChange}
-            validators={['required']}
-            errorMessages={['this field is required']}
-            className={classes.inputfield}
-          >
-            {'Password'}
-          </InputField>
-          <br />
-          <InputField
-            type={'username'}
-            id={'username'}
-            name={'username'}
-            value={'username'}
-            label={'user name'}
-            onChange={handleOnChange}
-          >
-            {'Username'}
-          </InputField>
-          <InputField
-            type="password"
-            name="repeatpassword"
-            value={'repeatpassword'}
-            id={'repeatpassword'}
-            label="Repeat password"
-            onChange={handleOnChange}
-            validators={['isPasswordMatch', 'required']}
-            errorMessages={['password mismatch', 'this field is required']}
-          >
-            {'Confirm Password'}
-          </InputField>
-          <br />
+    const data = {
+      email: values.email,
+      password: values.password,
+      tel: values.tel
+    }
+    fetch('/register', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: { 'Content-Type': 'application/json', }
 
-          <InputField
-            type={'phone'}
-            name={'phone'}
-            value={'phone'}
-            id={'phone'}
-            label={'phone number'}
-            onChange={handleOnChange}
-          >
-            {'Phone Number'}
-          </InputField>
-          <InputField
-            type={'city'}
-            name={'city'}
-            id={'city'}
-            value={'city'}
-            label={'city'}
-            onChange={handleOnChange}
-          >
-            {'City'}
-          </InputField>
-          <br />
-          <Button type="submit" variant="outlined" className={classes.submitButton}>
-            Create new account
-        </Button>
-        </ValidatorForm>
-      </div>
+    })
+      .then(res => res.json())
+      .then(result => {
+        console.log(result.sqlMessage)
+        setValues({ msg: result.sqlMessage })
+      })
+  };
+
+  const classes = useStyles();
+
+  return (
+
+
+    <div style={{
+      marginTop: '20vh', width: '25%', marginLeft: 'auto', marginRight: 'auto'
+    }}>
+
+      <ValidatorForm className={classes.root} onSubmit={event => handleSubmit(event)} >
+        <Typography variant='h4' style={{ marginBottom: 20 }}>Register Your Account</Typography>
+        {values.msg.includes('Registeration') && < Typography variant='h6' style={{ marginBottom: 20, color: 'green' }}>Registeration Done</Typography>}
+        {values.msg.includes('Duplicate') && < Typography variant='h6' style={{ marginBottom: 20, color: 'red' }}>Email alreay registered</Typography>}
+
+        {values.error && <Typography className={classes.error}>Email/Password Invalid</Typography>}
+        <TextField
+          variant='outlined'
+          type='email'
+          id='email'
+          placeholder='Email'
+          value={values.email}
+          onChange={handleOnChange}
+          validators={['required', 'isEmail']}
+          errorMessages={['this field is required', 'email is not valid']}
+        >
+        </TextField>
+        <br />
+        <TextField
+          variant='outlined'
+          type='text'
+          id='tel'
+          placeholder='Phone Number'
+          value={values.phoneNumber}
+          onChange={handleOnChange}
+          validators={['required']}
+          errorMessages={['this field is required']}
+        >
+        </TextField>
+        <br />
+        <TextField
+          variant='outlined'
+          type='password'
+          id='password'
+          placeholder='Password'
+          value={values.password}
+          onChange={handleOnChange}
+          validators={['required']}
+          errorMessages={['this field is required']}
+        >
+        </TextField>
+        <br />
+        <Button type="submit" variant="filled outlined" className={classes.submitButton}>
+          Register
+          </Button>
+      </ValidatorForm >
+    </div >
   );
 }
 
-export default SignUp;

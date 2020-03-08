@@ -1,62 +1,80 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { NavLink, Redirect } from 'react-router-dom';
 import SearchBar from './SearchBar';
-import { fade, makeStyles } from '@material-ui/core/styles';
-import { createMuiTheme } from '@material-ui/core/styles';
-
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import grey from '@material-ui/core/colors/grey';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { AppBar, Typography, Toolbar, Button } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-  },
-
-  title: {
-    flexGrow: 1,
-    [theme.breakpoints.up('sm')]: {
-      display: 'relative',
-    },
-  },
 
   navlink: {
-    flexGrow: 1,
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(1),
-      position: 'relative',
-      textDecoration: 'none',
-      color: 'white',
-      whiteSpace: 'nowrap',
-    },
+    marginLeft: 20,
+    textDecoration: 'none',
+    color: 'white',
+    whiteSpace: 'nowrap',
+
   },
-  toolbar: {
-    backgroundColor: grey[900],
+  title: {
+    marginLeft: '5%',
+    marginRight: '1%',
+    fontSize: '1.4em'
+  },
+  search: {
+    marginLeft: 0,
+    marginRight: 'auto',
+    width: '35%'
+
+  },
+  menu: {
+    marginLeft: '1%',
+    marginRight: '5%',
+    width: '12%',
+    justifyContent: 'space-between'
   },
 }));
 
-function Navbar() {
-  const classes = useStyles();
-  return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar className={classes.toolbar}>
-          <Typography className={classes.title} variant="h5">
-            Zoom
-          </Typography>
-          <SearchBar />
+const TopNav = withStyles(() => ({
+  root: {
+    backgroundColor: '#03396c',
+    display: 'flex',
+    flexDirection: 'row',
+    width: '100%',
+    margin: 'auto',
+  }
+}
+))(AppBar);
 
+
+export default function Navbar() {
+
+
+  const classes = useStyles();
+  const logOut = () => localStorage.removeItem('userId');
+  return (
+    <TopNav>
+      <Toolbar className={classes.title}>
+        <Typography className={classes.title}>
+          <NavLink to="/" className={classes.navlink}>
+            ZOOM
+            </NavLink>
+        </Typography>
+      </Toolbar>
+      <Toolbar className={classes.search}>
+
+        <SearchBar />
+      </Toolbar>
+      <Toolbar className={classes.menu}>
+        {localStorage.getItem('userId') !== null ? <NavLink to='/signin' className={classes.navlink} onClick={() => logOut()}><Typography>Sign out</Typography></NavLink> :
           <NavLink to="/signin" className={classes.navlink}>
-            Sign in
+            <Typography>Sign In</Typography>
           </NavLink>
+        }
+
+        {localStorage.getItem('userId') !== null ? <NavLink to="/postitem" className={classes.navlink}><Typography>Post Ad</Typography></NavLink> :
           <NavLink to="/signup" className={classes.navlink}>
-            Sign up
+            <Typography>Register</Typography>
           </NavLink>
-        </Toolbar>
-      </AppBar>
-    </div>
+        }
+      </Toolbar>
+    </TopNav>
   );
 }
-export default Navbar;

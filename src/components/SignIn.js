@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom'
-import { Button, Typography, TextField } from '@material-ui/core';
+import { Card, Button, Typography, TextField } from '@material-ui/core';
 import { ValidatorForm } from 'react-material-ui-form-validator';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -17,12 +17,12 @@ const useStyles = makeStyles(theme => ({
   },
   submitButton: {
     margin: '40px',
-    backgroundColor: '#333',
+    backgroundColor: '#005b96',
     color: 'white',
     '&:hover': {
       backgroundColor: '#FFFFFF',
       color: '#000',
-      border: '1px solid #CCC'
+      border: '1px solid #03396c'
     }
   },
   error: {
@@ -72,7 +72,7 @@ function SignIn() {
     localStorage.getItem('userId') !== null ? <Redirect to='/' /> :
 
       <div style={{
-        marginTop: '10vh', width: '20%', marginLeft: 'auto', marginRight: 'auto'
+        marginTop: '20vh', width: '20%', marginLeft: 'auto', marginRight: 'auto'
       }}>
 
         <ValidatorForm className={classes.root} onSubmit={event => handleSubmit(event)} >
