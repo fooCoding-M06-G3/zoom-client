@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink, Redirect } from 'react-router-dom';
 import SearchBar from './SearchBar';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
@@ -46,6 +46,7 @@ const TopNav = withStyles(() => ({
 
 export default function Navbar() {
 
+
   const classes = useStyles();
   const logOut = () => localStorage.removeItem('userId');
   return (
@@ -53,7 +54,7 @@ export default function Navbar() {
       <Toolbar className={classes.title}>
         <Typography className={classes.title}>
           <NavLink to="/" className={classes.navlink}>
-            Zoom
+            ZOOM
             </NavLink>
         </Typography>
       </Toolbar>

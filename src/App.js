@@ -6,6 +6,7 @@ import HomeScreen from './screens/HomeScreen';
 import SignInScreen from './screens/SignInScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import AddItemScreen from './screens/AddItemScreen';
+import ProductsDetailsScreen from './screens/ProductsDetailsScreen';
 
 function App() {
 
@@ -16,6 +17,8 @@ function App() {
 
       <div className="mainContent">
         <Switch>
+          <Route exact path="/item/:name" component={ProductsDetailsScreen} />
+
           <Route exact path="/signin">
             <SignInScreen />
           </Route>
