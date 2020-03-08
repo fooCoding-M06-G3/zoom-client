@@ -12,21 +12,25 @@ body {
 }
 
 .mainContent {
-  /* margin-top: 10vh; */
+  margin-top: 3%;
   text-align: center;
 }
 
-
+.main-image{
+  width: 100%;
+  height: 40%;
+}
 .main-image img {
   width: 100%;
+
 }
 .productContent{
   margin:auto;
-  width: 80%;
+  width: 90%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  text-align: center;
+  align-content: flex-start;  
 }
 .itemText{
    width: 50%; 
