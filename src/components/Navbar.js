@@ -8,13 +8,14 @@ const useStyles = makeStyles(theme => ({
   navlink: {
     marginLeft: 20,
     textDecoration: 'none',
-    color: 'white',
+    color: '#FFF',
     whiteSpace: 'nowrap',
   },
   title: {
     marginLeft: '5%',
     marginRight: '1%',
     fontSize: '1.4em',
+
   },
   search: {
     marginLeft: 0,
@@ -56,24 +57,24 @@ export default function Navbar() {
       </Toolbar>
       <Toolbar className={classes.menu}>
         {localStorage.getItem('userId') !== null ? (
-          <NavLink to="/signout" className={classes.navlink} onClick={() => logOut()}>
+          <NavLink to="/" className={classes.navlink} onClick={() => logOut()}>
             <Typography>Sign out</Typography>
           </NavLink>
         ) : (
-          <NavLink to="/signin" className={classes.navlink}>
-            <Typography>Sign In</Typography>
-          </NavLink>
-        )}
+            <NavLink to="/signin" className={classes.navlink}>
+              <Typography>Sign In</Typography>
+            </NavLink>
+          )}
 
         {localStorage.getItem('userId') !== null ? (
           <NavLink to="/postitem" className={classes.navlink}>
             <Typography>Post Ad</Typography>
           </NavLink>
         ) : (
-          <NavLink to="/signup" className={classes.navlink}>
-            <Typography>Register</Typography>
-          </NavLink>
-        )}
+            <NavLink to="/signup" className={classes.navlink}>
+              <Typography>Register</Typography>
+            </NavLink>
+          )}
       </Toolbar>
     </TopNav>
   );

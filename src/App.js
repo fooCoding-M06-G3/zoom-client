@@ -5,7 +5,7 @@ import Navbar from './components/Navbar';
 import HomeScreen from './screens/HomeScreen';
 import SignInScreen from './screens/SignInScreen';
 import SignUpScreen from './screens/SignUpScreen';
-import AddItemScreen from './screens/AddItemScreen';
+import PostItemScreen from './screens/PostItemScreen';
 import ProductListScreen from './screens/ProductListScreen';
 import ProductsDetailsScreen from './screens/ProductsDetailsScreen';
 
@@ -16,16 +16,15 @@ function App() {
 
       <div className="mainContent">
         <Switch>
-          <Route exact path="/item/:name" component={ProductsDetailsScreen} />
-
+          <Route exact path="/item/:id" component={ProductsDetailsScreen} />
           <Route exact path="/signin">
             <SignInScreen />
           </Route>
           <Route exact path="/signup">
             <SignUpScreen />
           </Route>
-          <Route exact path="/additem">
-            <AddItemScreen />
+          <Route exact path="/postitem">
+            <PostItemScreen />
           </Route>
           <Route exact path="/">
             <HomeScreen />

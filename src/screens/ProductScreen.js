@@ -9,7 +9,7 @@ export default function ProductScreen({ items }) {
   return (
     <div className='productContent'>
 
-      {items.map(item => <ProductCard name={item.title} src={item.image} price={item.price} city={item.city} id={item.productid} />)}
+      {items.map(item => <ProductCard name={item.title} src={item.url} price={item.price} city={item.city} id={item.productid} />)}
 
     </div>
   )
