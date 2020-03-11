@@ -5,7 +5,7 @@ import { Card, CardActionArea, CardContent, CardMedia, Typography, Divider } fro
 const useStyles = makeStyles({
   root: {
     width: '50vw',
-    marginTop: '20vh',
+    marginTop: '10vh',
     marginLeft: '10vw',
 
   },
@@ -50,10 +50,6 @@ const useStyles = makeStyles({
 export default function ProductsDetailsComponent({ items }) {
 
 
-
-
-  console.log(items)
-
   const classes = useStyles();
 
 
@@ -62,7 +58,7 @@ export default function ProductsDetailsComponent({ items }) {
       return (
         <Card className={classes.root} elevation={0}>
 
-          <CardMedia className={classes.media} image={item.image} />
+          <CardMedia className={classes.media} image={item.url} />
           <CardContent className={classes.details}>
             <Typography className={classes.city}>
               {item.city}

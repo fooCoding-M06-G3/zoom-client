@@ -35,7 +35,7 @@ export default function ProductCard({ id, src, name, price, city }) {
 
   return (
     <Link to={{
-      pathname: `/item/${name}`, details: { id }
+      pathname: `/item/${id}&${name}`, details: { id }
     }} style={{ textDecoration: 'none' }} onClick={() => localStorage.setItem('productId', id)} >
       <Card className={classes.root} >
         <CardActionArea>

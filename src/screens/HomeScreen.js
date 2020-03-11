@@ -14,9 +14,9 @@ export default function HomeScreen() {
       .then(products => {
         setItems(products)
 
+
       })
   }, [])
-
   return (
     <Fragment>
       <div className="main-image">
