@@ -6,11 +6,10 @@ import HomeScreen from './screens/HomeScreen';
 import SignInScreen from './screens/SignInScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import AddItemScreen from './screens/AddItemScreen';
+import ProductListScreen from './screens/ProductListScreen';
 import ProductsDetailsScreen from './screens/ProductsDetailsScreen';
 
 function App() {
-
-
   return (
     <Router>
       <Navbar />
@@ -31,6 +30,7 @@ function App() {
           <Route exact path="/">
             <HomeScreen />
           </Route>
+          <Route exact path="/productList" component={ProductListScreen}></Route>
         </Switch>
       </div>
     </Router>
