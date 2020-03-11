@@ -1,8 +1,9 @@
 import React, { Fragment, useState } from 'react';
+import { Redirect, withRouter } from 'react-router-dom';
 import SearchBar from './SearchBar';
 import SelectCity from './SelectCity';
 
-const ProductFilterBar = () => {
+const ProductFilterBar = props => {
   let products = [];
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCities, setSelectedCities] = useState([]);
@@ -17,8 +18,6 @@ const ProductFilterBar = () => {
     });
     request.then(response => {
       response.json().then(json => {
-        console.log(json);
-        // TODO: Filter by cities here.
         if (cities.length === 0) {
           products = json;
         } else {
@@ -31,7 +30,10 @@ const ProductFilterBar = () => {
             return false;
           });
         }
-        console.log(products);
+        props.history.push({
+          pathname: '/productList',
+          state: { productList: products },
+        });
       });
     });
   };
@@ -50,4 +52,4 @@ const ProductFilterBar = () => {
     </Fragment>
   );
 };
-export default ProductFilterBar;
+export default withRouter(ProductFilterBar);
