@@ -1,29 +1,29 @@
-// import React, { useState, useEffect } from 'react';
-// import { fade, makeStyles, useTheme } from '@material-ui/core/styles';
-// import FormControl from '@material-ui/core/FormControl';
-// import Select from '@material-ui/core/Select';
+// import React, { useState, useEffect } from "react";
+// import { fade, makeStyles, useTheme } from "@material-ui/core/styles";
+// import FormControl from "@material-ui/core/FormControl";
+// import Select from "@material-ui/core/Select";
 
-// import MenuItem from '@material-ui/core/MenuItem';
-// import grey from '@material-ui/core/colors/grey';
+// import MenuItem from "@material-ui/core/MenuItem";
+// import grey from "@material-ui/core/colors/grey";
 
 // const useStyles = makeStyles(theme => ({
 //   container: {
 //     maxWidth: 200,
-//     position: 'relative',
+//     position: "relative",
 //     borderRadius: theme.shape.borderRadius,
 //     backgroundColor: fade(theme.palette.common.white, 0.15),
-//     '&:hover': {
-//       backgroundColor: fade(theme.palette.common.white, 0.25),
+//     "&:hover": {
+//       backgroundColor: fade(theme.palette.common.white, 0.25)
 //     },
 //     marginLeft: 0,
 //     marginRight: theme.spacing(60),
 
-//     [theme.breakpoints.up('sm')]: {
+//     [theme.breakpoints.up("sm")]: {
 //       marginLeft: theme.spacing(1),
-//       width: 'auto',
-//     },
+//       width: "auto"
+//     }
 //   },
-//   emphasis: { color: grey[500] },
+//   emphasis: { color: grey[500] }
 // }));
 
 // const ITEM_HEIGHT = 48;
@@ -32,9 +32,9 @@
 //   PaperProps: {
 //     style: {
 //       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-//       width: 250,
-//     },
-//   },
+//       width: 250
+//     }
+//   }
 // };
 
 // const SelectCategories = props => {
@@ -42,10 +42,12 @@
 //   const classes = useStyles();
 //   const theme = useTheme();
 //   useEffect(() => {
-//     fetch('/getCategories')
+//     fetch("/getCategories")
 //       .then(response => response.json())
 //       .then(Categories => {
-//         let newCategories = Categories.map(Categories => Categories.Categoriesname);
+//         let newCategories = Categories.map(
+//           Categories => Categories.Categoriesname
+//         );
 //         setCategories(newCategories);
 //       });
 //   }, []);
@@ -61,36 +63,34 @@
 //       fontWeight:
 //         name.indexOf(item) === -1
 //           ? theme.typography.fontWeightRegular
-//           : theme.typography.fontWeightMedium,
+//           : theme.typography.fontWeightMedium
 //     };
 //   };
 
 //   return (
 //     <div>
-
-//         <Select
-//           multiple
-//           displayEmpty
-//           value={props.selectedCategories}
-//           onChange={handleChange}
-//           renderValue={selected => {
-//             if (selected.length === 0) {
-//               return <em className={classes.emphasis}>Select Categories..</em>;
-//             }
-//             return selected.join(', ');
-//           }}
-//           MenuProps={MenuProps}
-//         >
-//           <MenuItem disabled value="">
-//             <p>Categories</p>
+//       <Select
+//         multiple
+//         displayEmpty
+//         value={props.selectedCategories}
+//         onChange={handleChange}
+//         renderValue={selected => {
+//           if (selected.length === 0) {
+//             return <em className={classes.emphasis}>Select Categories..</em>;
+//           }
+//           return selected.join(", ");
+//         }}
+//         MenuProps={MenuProps}
+//       >
+//         <MenuItem disabled value="">
+//           <p>Categories</p>
+//         </MenuItem>
+//         {Categories.map(item => (
+//           <MenuItem key={item} value={item}>
+//             {item}
 //           </MenuItem>
-//           {Categories.map(item => (
-//             <MenuItem key={item} value={item}>
-//               {item}
-//             </MenuItem>
-//           ))}
-//         </Select>
-
+//         ))}
+//       </Select>
 //     </div>
 //   );
 // };
