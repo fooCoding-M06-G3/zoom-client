@@ -1,32 +1,31 @@
 import React, { Fragment, useEffect, useState } from "react";
 import "../App.css";
 import Avatar from "../components/avatarcomponent/Avatar";
+import Footer from "../components/footer/Footer";
 import ProductScreen from "./ProductScreen";
-import { Typography } from '@material-ui/core'
+import { Typography } from "@material-ui/core";
 
 export default function HomeScreen() {
-
-  const [items, setItems] = useState([])
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
-    fetch('/getProducts')
+    fetch("/getProducts")
       .then(response => response.json())
       .then(products => {
-        setItems(products)
-
-
-      })
-  }, [])
+        setItems(products);
+      });
+  }, []);
   return (
     <Fragment>
       <div className="main-image">
-        <img src={require('../images/zoom.jpg')} alt="mainImage" />
-      </div >
+        <img src={require("../images/zoom.jpg")} alt="mainImage" />
+      </div>
       <Avatar />
       <br />
-      <Typography variant='h5' > Recently Published </Typography>
+      <Typography variant="h5"> Recently Published </Typography>
       <br />
       <ProductScreen items={items} />
+      <Footer />
     </Fragment>
   );
 }
