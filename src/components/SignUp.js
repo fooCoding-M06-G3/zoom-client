@@ -115,6 +115,7 @@ export default function SignUp() {
           />
           <br />
           <TextValidator
+
             variant='outlined'
             type='password'
             id='password'
@@ -124,6 +125,7 @@ export default function SignUp() {
             validators={['required']}
             errorMessages={['this field is required']}
           />
+
           <br />
           <Button type="submit" variant="filled outlined" className={classes.submitButton}>
             Register

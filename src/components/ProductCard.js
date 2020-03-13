@@ -1,29 +1,60 @@
-import React from 'react'
-import '../App.css';
-import { Card, CardTitle, CardActions, CardText, MenuItem } from 'react-mdl'
+import React from 'react';
+import { Link } from 'react-router-dom'
+import { makeStyles } from '@material-ui/core/styles';
+import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@material-ui/core';
 
-export default function ProductCard() {
+const useStyles = makeStyles({
+  root: {
+    width: '20vw',
+    margin: 15,
+  },
+  media: {
+    height: '35vh',
+    width: '100%',
+  },
+  details: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    width: '90%',
+    borderTop: '1px solid #CCC',
+  },
+  title: {
+    fontSize: '1.4em',
+    textAlign: 'left',
+  },
+  city: {
+    fontSize: '1.3em',
+    color: '#CCC',
+    textAlign: 'left',
+  }
+});
+
+export default function ProductCard({ id, src, name, price, city }) {
+  const classes = useStyles();
 
   return (
-
-    <Card shadow={0} style={{ width: '23%', height: '34vh', margin: '10px', border: '1px solid #ccc' }} >
-      <CardTitle expand style={{ background: 'url(http://www.getmdl.io/assets/demos/dog.png) bottom right 15% no-repeat #46B6AC' }} >
-        <CardActions style={{ width: '30%', background: '#333', marginTop: '70%' }}>
-          <span style={{ width: '100%', color: '#fff', padding: 5, fontSize: '1.4em', fontWeight: '500' }}>
-            1200
-          </span>
-        </CardActions>
-      </CardTitle>
-
-      <div style={{ display: 'flex', height: '20%', width: '100%' }}>
-        <span className='itemText' >
-          Item Name
-          </span>
-        <span className='itemText' >
-          City
-          </span>
-      </div>
-    </Card>
-
+    <Link to={{
+      pathname: `/item/${id}&${name}`, details: { id }
+    }} style={{ textDecoration: 'none' }} onClick={() => localStorage.setItem('productId', id)} >
+      <Card className={classes.root} >
+        <CardActionArea>
+          <CardMedia className={classes.media} image={src} />
+          <CardContent className={classes.details}>
+            <Typography className={classes.title}>
+              {name}
+            </Typography>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <Typography className={classes.title}>
+                {price} SEK
+            </Typography>
+              <Typography className={classes.city}>
+                {city}
+              </Typography>
+            </div>
+          </CardContent>
+        </CardActionArea>
+      </Card>
+    </Link>
   )
 }

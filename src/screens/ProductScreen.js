@@ -1,19 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 
 import ProductCard from '../components/ProductCard'
 
-export default function ProductScreen() {
+export default function ProductScreen({ items }) {
+
+
   return (
     <div className='productContent'>
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
+
+      {items.map(item => <ProductCard name={item.title} src={item.url} price={item.price} city={item.city} id={item.productid} />)}
+
     </div>
   )
 }
