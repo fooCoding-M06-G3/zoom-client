@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom'
-import { Card, CardContent, Button, Typography, TextField } from '@material-ui/core';
-import { ValidatorForm } from 'react-material-ui-form-validator';
+import { Card, CardContent, Button, Typography, } from '@material-ui/core';
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
@@ -89,7 +89,7 @@ function SignIn() {
 
             <Typography style={{ marginBottom: 20, fontSize: '1.7em' }}>Sign In </Typography>
             {values.error && <Typography className={classes.error}>Email/Password Invalid</Typography>}
-            <TextField
+            <TextValidator
               variant='outlined'
               type='email'
               id='email'
@@ -98,11 +98,10 @@ function SignIn() {
               onChange={handleOnChange}
               validators={['required', 'isEmail']}
               errorMessages={['this field is required', 'email is not valid']}
-            >
+            />
 
-            </TextField>
             <br />
-            <TextField
+            <TextValidator
               variant='outlined'
               type='password'
               id='password'
@@ -111,9 +110,8 @@ function SignIn() {
               onChange={handleOnChange}
               validators={['required']}
               errorMessages={['this field is required']}
-            >
+            />
 
-            </TextField>
             <br />
             <Button type="submit" variant="filled outlined" className={classes.submitButton}>
               Sign in

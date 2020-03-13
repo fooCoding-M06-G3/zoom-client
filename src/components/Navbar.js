@@ -43,6 +43,7 @@ const TopNav = withStyles(() => ({
 export default function Navbar() {
   const classes = useStyles();
   const logOut = () => localStorage.removeItem('userId');
+  const refreshPage = () => window.location.reload();
   return (
     <TopNav>
       <Toolbar className={classes.title}>
@@ -57,7 +58,11 @@ export default function Navbar() {
       </Toolbar>
       <Toolbar className={classes.menu}>
         {localStorage.getItem('userId') !== null ? (
-          <NavLink to="/" className={classes.navlink} onClick={() => logOut()}>
+          <NavLink to="/" className={classes.navlink} onClick={() => {
+            logOut();
+            refreshPage()
+          }
+          }>
             <Typography>Sign out</Typography>
           </NavLink>
         ) : (
