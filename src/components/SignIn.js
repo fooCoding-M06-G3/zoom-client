@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom'
-import { Card, CardContent, Button, Typography, } from '@material-ui/core';
+import { Link, Redirect } from 'react-router-dom'
+import { Card, CardContent, Button, Typography } from '@material-ui/core';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -77,12 +77,12 @@ function SignIn() {
 
   return (
 
-    localStorage.getItem('userId') !== null ? <Redirect to='/' /> :
+    localStorage.getItem('userId') !== null ? <Redirect to='/postitem' /> :
 
       <Card className={classes.card} >
 
         <CardContent style={{
-          width: '70%', marginLeft: '10%', marginTop: '5%'
+          width: '70%', marginLeft: '15%', marginTop: '5%'
         }}>
 
           <ValidatorForm className={classes.root} onSubmit={event => handleSubmit(event)} >
@@ -118,6 +118,10 @@ function SignIn() {
           </Button>
           </ValidatorForm >
         </CardContent >
+        <CardContent>
+          <Typography>Not registered?</Typography>
+          <Link to='signup'>Signup</Link>
+        </CardContent>
       </Card>
   );
 }

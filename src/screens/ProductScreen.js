@@ -5,6 +5,7 @@ import ProductCard from '../components/ProductCard'
 
 export default function ProductScreen({ items }) {
 
+  console.log(items)
 
   return (
     <div className='productContent'>

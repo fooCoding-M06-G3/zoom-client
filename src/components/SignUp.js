@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Redirect } from 'react-router-dom'
 import { Card, CardContent, Button, Typography, TextField } from '@material-ui/core';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { makeStyles } from '@material-ui/core/styles';
@@ -31,7 +30,7 @@ const useStyles = makeStyles(theme => ({
   },
   card: {
     marginTop: '10vh',
-    width: '30%',
+    width: '35%',
     marginLeft: 'auto',
     marginRight: 'auto'
   }
@@ -84,7 +83,7 @@ export default function SignUp() {
     <Card className={classes.card} >
 
       <CardContent style={{
-        width: '70%', marginLeft: '10%', marginTop: '5%'
+        width: '70%', marginLeft: '15%', marginTop: '5%'
       }}>
         <ValidatorForm className={classes.root} onSubmit={event => handleSubmit(event)} >
           <Typography style={{ marginBottom: 20, fontSize: '1.7em' }}>Register Your Account</Typography>
