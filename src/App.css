@@ -32,8 +32,8 @@ body {
   width: 90%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  align-content: flex-start;  
+  align-content:space-around;
+  justify-content: flex-start;
 }
 .itemText{
    width: 50%; 

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
+import { Redirect } from 'react-router-dom';
 import { Fab, Button, Typography, Select, option, InputLabel, } from '@material-ui/core';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { makeStyles } from '@material-ui/core/styles';
@@ -117,6 +118,7 @@ export default function PostItemComponent() {
     const image = images.images.map(image => image);
 
     const data = new FormData();
+
     data.append('image1', image[0])
     data.append('image2', image[1])
     data.append('image3', image[2])
@@ -139,172 +141,176 @@ export default function PostItemComponent() {
 
 
   const classes = useStyles();
+  const clearImage = () => window.alert('CLEAR');
 
   return (
 
-    <div style={{
-      width: '50%', marginLeft: 'auto', marginRight: 'auto', backgroundColor: '#FFF'
-    }}>
+    localStorage.getItem('userId') === null ? <Redirect to='/signin' /> :
+
       <div style={{
-        marginTop: '10vh', width: '50%', marginLeft: 10
+        width: '50%', marginLeft: 'auto', marginRight: 'auto', backgroundColor: '#FFF'
       }}>
+        <div style={{
+          marginTop: '10vh', width: '50%', marginLeft: 10
+        }}>
 
-        <ValidatorForm className={classes.root} onSubmit={event => handleSubmit(event)} >
+          <ValidatorForm className={classes.root} onSubmit={event => handleSubmit(event)} >
 
-          <Typography variant='h5' style={{ textAlign: 'left', marginBottom: 20, paddingTop: 10, marginLeft: 10 }}>Place your ad</Typography>
-          <TextValidator
-            className={classes.input}
-            variant='outlined'
-            type='text'
-            id='title'
-            label='Title'
-            value={values.title}
-            onChange={handleOnChange}
-            validators={['required']}
-            errorMessages={['this field is required']}
-          />
-          <br />
-          <select
-            className={classes.category}
-            variant='outlined'
-            id="selectedCategory"
-            select
-            value={values.selectedCategory}
-            onChange={handleOnChange} >
-            <option value='' >Select Category </option>
-            {categories.map((category, i) => {
-              return <option value={category.categoryname} key={i}>{category.categoryname}</option>
-            })}
+            <Typography variant='h5' style={{ textAlign: 'left', marginBottom: 20, paddingTop: 10, marginLeft: 10 }}>Place your ad</Typography>
+            <TextValidator
+              className={classes.input}
+              variant='outlined'
+              type='text'
+              id='title'
+              label='Title'
+              value={values.title}
+              onChange={handleOnChange}
+              validators={['required']}
+              errorMessages={['this field is required']}
+            />
+            <br />
+            <select
+              className={classes.category}
+              variant='outlined'
+              id="selectedCategory"
+              select
+              value={values.selectedCategory}
+              onChange={handleOnChange} >
+              <option value='' >Select Category </option>
+              {categories.map((category, i) => {
+                return <option value={category.categoryname} key={i}>{category.categoryname}</option>
+              })}
 
-          </select>
-          <br />
-          <TextValidator
-            className={classes.input}
-            variant='outlined'
-            type='text'
-            id='price'
-            label='Price'
-            value={values.price}
-            onChange={handleOnChange}
-            validators={['required']}
-            errorMessages={['this field is required']}
-          />
-          <br />
-          <select
-            className={classes.category}
-            variant='outlined'
-            id="selectedCity"
-            select
-            value={values.selectedCity}
-            onChange={handleOnChange} >
-            <option value='' >Select Place </option>
-            {cities.map((city, i) => {
-              return <option value={city.cityname} key={i}>{city.cityname}</option>
-            })}
+            </select>
+            <br />
+            <TextValidator
+              className={classes.input}
+              variant='outlined'
+              type='text'
+              id='price'
+              label='Price'
+              value={values.price}
+              onChange={handleOnChange}
+              validators={['required']}
+              errorMessages={['this field is required']}
+            />
+            <br />
+            <select
+              className={classes.category}
+              variant='outlined'
+              id="selectedCity"
+              select
+              value={values.selectedCity}
+              onChange={handleOnChange} >
+              <option value='' >Select Place </option>
+              {cities.map((city, i) => {
+                return <option value={city.cityname} key={i}>{city.cityname}</option>
+              })}
 
-          </select>
-          <br />
+            </select>
+            <br />
 
-          <InputLabel style={{ textAlign: 'left', marginTop: 20, marginLeft: 10 }} >Pictures</InputLabel>
-
-          <br />
-          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <InputLabel style={{ textAlign: 'left', marginTop: 20, marginLeft: 10 }} >Pictures</InputLabel>
 
             <br />
-            <div className={classes.image}>
-              {images.url[0] !== undefined ? <img src={images.url[0]} alt='preview' className={classes.preview} /> :
-                <label htmlFor="upload-photo">
-                  <TextValidator
-                    style={{ display: 'none' }}
-                    id="upload-photo"
-                    type="file"
-                    elevation={0}
-                    onChange={handleImageChange}
-                    multiple
-                  />
-                  <Fab component="span" aria-label="add" > <AddAPhotoIcon /></Fab>
-                </label>
-              }
-            </div>
-            <div className={classes.image}>
-              {images.url[1] !== undefined ?
-                <img src={images.url[1]} alt='preview' className={classes.preview} /> :
-                <label htmlFor="upload-photo">
-                  <TextValidator
-                    style={{ display: 'none' }}
-                    id="upload-photo"
-                    type="file"
-                    elevation={0}
-                    onChange={handleImageChange}
-                  />
-                  <Fab component="span" aria-label="add" > <AddAPhotoIcon /></Fab>
-                </label>
-              }
-            </div>
-            <div className={classes.image}>
-              {images.url[2] !== undefined ? <img src={images.url[2]} alt='preview' className={classes.preview} /> :
-                <label htmlFor="upload-photo">
-                  <TextValidator
-                    style={{ display: 'none' }}
-                    id="upload-photo"
-                    type="file"
-                    elevation={0}
-                    onChange={handleImageChange}
-                  />
-                  <Fab component="span" aria-label="add" > <AddAPhotoIcon /></Fab>
-                </label>
-              }
-            </div>
-            <div className={classes.image}>
-              {images.url[3] !== undefined ? <img src={images.url[3]} alt='preview' className={classes.preview} /> :
-                <label htmlFor="upload-photo">
-                  <TextValidator
-                    style={{ display: 'none' }}
-                    id="upload-photo"
-                    type="file"
-                    elevation={0}
-                    onChange={handleImageChange}
-                  />
-                  <Fab component="span" aria-label="add" > <AddAPhotoIcon /></Fab>
-                </label>
-              }
-            </div>
-            <div className={classes.image}>
-              {images.url[4] !== undefined ? <img src={images.url[4]} alt='preview' className={classes.preview} /> :
-                <label htmlFor="upload-photo">
-                  <TextValidator
-                    style={{ display: 'none' }}
-                    id="upload-photo"
-                    type="file"
-                    elevation={0}
-                    onChange={handleImageChange}
-                  />
-                  <Fab component="span" aria-label="add" > <AddAPhotoIcon /></Fab>
-                </label>
-              }
-            </div>
-          </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
 
-          <br />
-          <TextValidator
-            className={classes.input}
-            variant='outlined'
-            multiline={true}
-            rows='10'
-            type='text'
-            id='description'
-            placeholder='Description'
-            value={values.description}
-            onChange={handleOnChange}
-            validators={['required']}
-            errorMessages={['this field is required']}
-          />
-          <br />
-          <Button type="submit" variant="filled outlined" className={classes.submitButton}>
-            Post Ad
+              <br />
+              <div className={classes.image}>
+                {images.url[0] !== undefined ? <Fragment><img src={images.url[0]} alt='preview' className={classes.preview} /><span onClick={() => clearImage()}>delete</span></Fragment> :
+                  <label htmlFor="upload-photo">
+                    <TextValidator
+                      style={{ display: 'none' }}
+                      id="upload-photo"
+                      type="file"
+                      accept="image/*"
+                      elevation={0}
+                      onChange={handleImageChange}
+                      multiple
+                    />
+                    <Fab component="span" aria-label="add" > <AddAPhotoIcon /></Fab>
+                  </label>
+                }
+              </div>
+              <div className={classes.image}>
+                {images.url[1] !== undefined ?
+                  <img src={images.url[1]} alt='preview' className={classes.preview} /> :
+                  <label htmlFor="upload-photo">
+                    <TextValidator
+                      style={{ display: 'none' }}
+                      id="upload-photo"
+                      type="file"
+                      elevation={0}
+                      onChange={handleImageChange}
+                    />
+                    <Fab component="span" aria-label="add" > <AddAPhotoIcon /></Fab>
+                  </label>
+                }
+              </div>
+              <div className={classes.image}>
+                {images.url[2] !== undefined ? <img src={images.url[2]} alt='preview' className={classes.preview} /> :
+                  <label htmlFor="upload-photo">
+                    <TextValidator
+                      style={{ display: 'none' }}
+                      id="upload-photo"
+                      type="file"
+                      elevation={0}
+                      onChange={handleImageChange}
+                    />
+                    <Fab component="span" aria-label="add" > <AddAPhotoIcon /></Fab>
+                  </label>
+                }
+              </div>
+              <div className={classes.image}>
+                {images.url[3] !== undefined ? <img src={images.url[3]} alt='preview' className={classes.preview} /> :
+                  <label htmlFor="upload-photo">
+                    <TextValidator
+                      style={{ display: 'none' }}
+                      id="upload-photo"
+                      type="file"
+                      elevation={0}
+                      onChange={handleImageChange}
+                    />
+                    <Fab component="span" aria-label="add" > <AddAPhotoIcon /></Fab>
+                  </label>
+                }
+              </div>
+              <div className={classes.image}>
+                {images.url[4] !== undefined ? <img src={images.url[4]} alt='preview' className={classes.preview} /> :
+                  <label htmlFor="upload-photo">
+                    <TextValidator
+                      style={{ display: 'none' }}
+                      id="upload-photo"
+                      type="file"
+                      elevation={0}
+                      onChange={handleImageChange}
+                    />
+                    <Fab component="span" aria-label="add" > <AddAPhotoIcon /></Fab>
+                  </label>
+                }
+              </div>
+            </div>
+
+            <br />
+            <TextValidator
+              className={classes.input}
+              variant='outlined'
+              multiline={true}
+              rows='10'
+              type='text'
+              id='description'
+              placeholder='Description'
+              value={values.description}
+              onChange={handleOnChange}
+              validators={['required']}
+              errorMessages={['this field is required']}
+            />
+            <br />
+            <Button type="submit" variant="filled outlined" className={classes.submitButton}>
+              Post Ad
           </Button>
-        </ValidatorForm >
+          </ValidatorForm >
+        </div >
       </div >
-    </div >
   );
 }
