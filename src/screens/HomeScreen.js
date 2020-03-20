@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import "../App.css";
 import Avatar from "../components/avatarcomponent/Avatar";
-import Footer from "../components/footercomponent/Footer";
 import ProductScreen from "./ProductScreen";
 import { Typography } from "@material-ui/core";
 
@@ -25,7 +24,6 @@ export default function HomeScreen() {
       <Typography variant="h5"> Recently Published </Typography>
       <br />
       <ProductScreen items={items} />
-      <Footer />
     </Fragment>
   );
 }

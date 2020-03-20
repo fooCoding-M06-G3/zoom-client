@@ -9,6 +9,7 @@ import SignUpScreen from "./screens/SignUpScreen";
 import PostItemScreen from "./screens/PostItemScreen";
 import ProductListScreen from "./screens/ProductListScreen";
 import ProductsDetailsScreen from "./screens/ProductsDetailsScreen";
+import Footer from "./components/footercomponent/Footer";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
             component={ProductListScreen}
           ></Route>
         </Switch>
+        <Footer />
       </div>
     </Router>
   );
