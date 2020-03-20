@@ -5,8 +5,8 @@ import { AppBar, Typography, Toolbar, Button } from '@material-ui/core';
 import ProductFilterBar from './ProductFilterBar';
 
 const useStyles = makeStyles(theme => ({
+
   navlink: {
-    marginLeft: 20,
     textDecoration: 'none',
     color: '#FFF',
     whiteSpace: 'nowrap',
@@ -23,9 +23,9 @@ const useStyles = makeStyles(theme => ({
     width: '35%',
   },
   menu: {
-    marginLeft: '1%',
+    marginLeft: 0,
     marginRight: '5%',
-    width: '12%',
+    width: '15%',
     justifyContent: 'space-between',
   },
 }));
@@ -43,8 +43,11 @@ const TopNav = withStyles(() => ({
 export default function Navbar() {
   const classes = useStyles();
   const logOut = () => localStorage.removeItem('userId');
+  const refreshPage = () => window.location.reload();
+
   return (
     <TopNav>
+
       <Toolbar className={classes.title}>
         <Typography className={classes.title}>
           <NavLink to="/" className={classes.navlink}>
@@ -52,12 +55,18 @@ export default function Navbar() {
           </NavLink>
         </Typography>
       </Toolbar>
+
       <Toolbar className={classes.search}>
         <ProductFilterBar />
       </Toolbar>
+
       <Toolbar className={classes.menu}>
         {localStorage.getItem('userId') !== null ? (
-          <NavLink to="/" className={classes.navlink} onClick={() => logOut()}>
+          <NavLink to="/" className={classes.navlink} onClick={() => {
+            logOut();
+            refreshPage()
+          }
+          }>
             <Typography>Sign out</Typography>
           </NavLink>
         ) : (
@@ -66,16 +75,13 @@ export default function Navbar() {
             </NavLink>
           )}
 
-        {localStorage.getItem('userId') !== null ? (
-          <NavLink to="/postitem" className={classes.navlink}>
-            <Typography>Post Ad</Typography>
-          </NavLink>
-        ) : (
-            <NavLink to="/signup" className={classes.navlink}>
-              <Typography>Register</Typography>
-            </NavLink>
-          )}
+
+        <NavLink to="/postitem" className={classes.navlink}>
+          <Button variant="contained" color="primary">Post Ad</Button>
+        </NavLink>
+
       </Toolbar>
+
     </TopNav>
   );
 }
