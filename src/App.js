@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/Navbar";
 import HomeScreen from "./screens/HomeScreen";
 import SignInScreen from "./screens/SignInScreen";
@@ -9,6 +9,7 @@ import SignUpScreen from "./screens/SignUpScreen";
 import PostItemScreen from "./screens/PostItemScreen";
 import ProductListScreen from "./screens/ProductListScreen";
 import ProductsDetailsScreen from "./screens/ProductsDetailsScreen";
+import Footer from "./components/footercomponent/Footer";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
             component={ProductListScreen}
           ></Route>
         </Switch>
+        <Footer />
       </div>
     </Router>
   );
