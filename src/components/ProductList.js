@@ -35,13 +35,16 @@ export default function ProductList(props) {
   return (
     <div className="productContent" style={{ marginTop: 100 }}>
       {props.productList.map(item => {
+        let newDate = item.date;
+        let dateFormat = newDate.slice(0, 10);
         return (
           <ProductCard
             id={item.productid}
-            src={item.image}
+            src={item.imageurl_1}
             name={item.title}
-            city={item.cityname}
+            city={item.city}
             price={item.price}
+            date={dateFormat}
           />
         );
       })}
