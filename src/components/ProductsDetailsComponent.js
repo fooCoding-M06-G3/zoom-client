@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Card, CardActionArea, CardContent, CardMedia, Typography, Divider } from '@material-ui/core';
+import {
+  Card,
+  CardActionArea,
+  CardContent,
+  CardMedia,
+  Typography,
+  Divider,
+} from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
     width: '50vw',
     marginTop: '10vh',
     marginLeft: '10vw',
-
   },
   media: {
     height: '55vh',
@@ -22,7 +28,7 @@ const useStyles = makeStyles({
   title: {
     textAlign: 'left',
     paddingBottom: 20,
-    marginTop: 20
+    marginTop: 20,
   },
   price: {
     textAlign: 'left',
@@ -35,51 +41,33 @@ const useStyles = makeStyles({
     textAlign: 'left',
   },
   description: {
-
     fontSize: '1.2em',
     textAlign: 'left',
     color: '#424242',
     marginTop: 20,
-    lineHeight: 2
-
-  }
-
-
+    lineHeight: 2,
+  },
 });
 
 export default function ProductsDetailsComponent({ items }) {
-
-
   const classes = useStyles();
 
+  return items.map(item => {
+    return (
+      <Card className={classes.root} elevation={0}>
+        <CardMedia className={classes.media} image={item.imageurl_1} />
+        <CardContent className={classes.details}>
+          <Typography className={classes.city}>{item.city}</Typography>
+          <Typography variant="h4" className={classes.title}>
+            {item.title}
+          </Typography>
+          <Divider />
 
-  return (
-    items.map(item => {
-      return (
-        <Card className={classes.root} elevation={0}>
+          <Typography className={classes.price}>{item.price} SEK</Typography>
 
-          <CardMedia className={classes.media} image={item.url} />
-          <CardContent className={classes.details}>
-            <Typography className={classes.city}>
-              {item.city}
-            </Typography>
-            <Typography variant='h4' className={classes.title}>
-              {item.title}
-            </Typography>
-            <Divider />
-
-            <Typography className={classes.price}>
-              {item.price} SEK
-              </Typography>
-
-            <Typography className={classes.description} >
-              {item.description}
-            </Typography>
-
-          </CardContent>
-
-        </Card>
-      )
-    }
-    ))
+          <Typography className={classes.description}>{item.description}</Typography>
+        </CardContent>
+      </Card>
+    );
+  });
 }
