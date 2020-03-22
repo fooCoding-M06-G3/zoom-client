@@ -23,7 +23,7 @@ const ProductFilterBar = props => {
         } else {
           products = json.filter(item => {
             for (let city of cities) {
-              if (city === item.cityname) {
+              if (city === item.city) {
                 return true;
               }
             }

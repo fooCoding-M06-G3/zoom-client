@@ -20,22 +20,28 @@ const useStyles = makeStyles(theme => ({
 
 const SelectSubCategory = props => {
   const classes = useStyles();
-
+  const [value, setValue] = useState(null);
   const [subCategory, setSubCategory] = useState([]);
   const [selectedSubCategory, setSelectedSubCategory] = useState('');
-  useEffect(() => {
-    const request = fetch('/getSubCategories', {
+
+  const fetchSubCategories = async () => {
+    const response = await fetch('/getSubCategories', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ category: props.categoryid }),
     });
-    request
-      .then(response => response.json())
-      .then(subcategories => {
-        setSubCategory(subcategories);
-      });
+    const json = await response.json();
+    setSubCategory(json);
+    setValue(json[0].subcategoryid);
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetchSubCategories();
+    };
+    fetchData();
   }, []);
 
   const handleChange = event => {
@@ -55,17 +61,9 @@ const SelectSubCategory = props => {
   return (
     <Fragment>
       <FormControl className={classes.formControl}>
-        <Select
-          value="Sub Categories"
-          onChange={handleChange}
-          displayEmpty
-          className={classes.selectEmpty}
-        >
-          <MenuItem value="Sub Categories">
-            <em>Sub Categories</em>
-          </MenuItem>
+        <Select value={value} onChange={handleChange} autoFocus className={classes.selectEmpty}>
           {subCategory.map(item => (
-            <MenuItem key={item.subcategoryid} value={item.subcategoryid}>
+            <MenuItem key={item.subcategoryid} value={item.subcategoryid} selected>
               {item.subcategoryname}
             </MenuItem>
           ))}
