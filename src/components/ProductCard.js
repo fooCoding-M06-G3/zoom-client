@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@material-ui/core';
 
@@ -27,34 +27,34 @@ const useStyles = makeStyles({
     fontSize: '1.3em',
     color: '#CCC',
     textAlign: 'left',
-  }
+  },
 });
 
-export default function ProductCard({ id, src, name, price, city }) {
+export default function ProductCard({ id, src, name, price, city, date }) {
   const classes = useStyles();
 
   return (
-    <Link to={{
-      pathname: `/item/${id}&${name}`, details: { id }
-    }} style={{ textDecoration: 'none' }} onClick={() => localStorage.setItem('productId', id)} >
-      <Card className={classes.root} >
+    <Link
+      to={{
+        pathname: `/item/${id}&${name}`,
+        details: { id },
+      }}
+      style={{ textDecoration: 'none' }}
+      onClick={() => localStorage.setItem('productId', id)}
+    >
+      <Card className={classes.root}>
         <CardActionArea>
           <CardMedia className={classes.media} image={src} />
           <CardContent className={classes.details}>
-            <Typography className={classes.title}>
-              {name}
-            </Typography>
+            <Typography className={classes.title}>{name}</Typography>
+            <Typography className={classes.title}>{price} SEK</Typography>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <Typography className={classes.title}>
-                {price} SEK
-            </Typography>
-              <Typography className={classes.city}>
-                {city}
-              </Typography>
+              <Typography className={classes.city}>{city}</Typography>
+              <Typography className={classes.city}>{date}</Typography>
             </div>
           </CardContent>
         </CardActionArea>
       </Card>
     </Link>
-  )
+  );
 }
