@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@material-ui/core';
+import { formatDistanceStrict } from 'date-fns/esm'
+const dateTime = require('date-time');
 
 const useStyles = makeStyles({
   root: {
@@ -16,22 +18,40 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    width: '90%',
-    borderTop: '1px solid #CCC',
+    width: '100%',
   },
+
   title: {
-    fontSize: '1.4em',
+    fontSize: '1.1em',
     textAlign: 'left',
+    width: '60%',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis'
   },
-  city: {
-    fontSize: '1.3em',
-    color: '#CCC',
+  price: {
+    fontSize: '1.1em',
     textAlign: 'left',
+    color: 'green'
   },
+  time: {
+    fontSize: '0.9em',
+    textAlign: 'left',
+    color: '#CCC'
+  }
+
 });
 
 export default function ProductCard({ id, src, name, price, city, date }) {
   const classes = useStyles();
+
+
+  const postDate = date;
+
+  const distance = formatDistanceStrict(
+    new Date(postDate),
+    new Date(dateTime())
+  )
+
 
   return (
     <Link
@@ -44,14 +64,24 @@ export default function ProductCard({ id, src, name, price, city, date }) {
     >
       <Card className={classes.root}>
         <CardActionArea>
+
           <CardMedia className={classes.media} image={src} />
+
           <CardContent className={classes.details}>
-            <Typography className={classes.title}>{name}</Typography>
-            <Typography className={classes.title}>{price} SEK</Typography>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <Typography className={classes.city}>{city}</Typography>
-              <Typography className={classes.city}>{date}</Typography>
+              <Typography noWrap className={classes.title}>
+                {name}
+              </Typography>
+              <Typography className={classes.price}>
+                {price} SEK
+              </Typography>
+
             </div>
+
+            <Typography className={classes.time}>
+              {distance} ago in {city}
+            </Typography>
+
           </CardContent>
         </CardActionArea>
       </Card>
