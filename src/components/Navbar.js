@@ -10,6 +10,22 @@ const useStyles = makeStyles(theme => ({
     textDecoration: 'none',
     color: '#FFF',
     whiteSpace: 'nowrap',
+    '&:hover': {
+      textDecoration: 'none',
+      color: '#CCC'
+
+    }
+  },
+  registerLink: {
+    marginRight: 30,
+    textDecoration: 'none',
+    color: '#FFF',
+    whiteSpace: 'nowrap',
+    '&:hover': {
+      textDecoration: 'none',
+      color: '#CCC'
+
+    }
   },
   title: {
     marginLeft: '5%',
@@ -23,10 +39,7 @@ const useStyles = makeStyles(theme => ({
     width: '35%',
   },
   menu: {
-    marginLeft: 0,
     marginRight: '5%',
-    width: '15%',
-    justifyContent: 'space-between',
   },
 }));
 
@@ -36,14 +49,15 @@ const TopNav = withStyles(() => ({
     display: 'flex',
     flexDirection: 'row',
     width: '100%',
+    height: 70,
     margin: 'auto',
   },
 }))(AppBar);
 
-export default function Navbar() {
+export default function Navbar(props) {
   const classes = useStyles();
   const logOut = () => localStorage.removeItem('userId');
-  const refreshPage = () => window.location.reload();
+  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('userId') !== null ? true : false);
 
   return (
     <TopNav>
@@ -51,7 +65,7 @@ export default function Navbar() {
       <Toolbar className={classes.title}>
         <Typography className={classes.title}>
           <NavLink to="/" className={classes.navlink}>
-            ZOOM
+            zoom
           </NavLink>
         </Typography>
       </Toolbar>
@@ -61,25 +75,23 @@ export default function Navbar() {
       </Toolbar>
 
       <Toolbar className={classes.menu}>
-        {localStorage.getItem('userId') !== null ? (
-          <NavLink to="/" className={classes.navlink} onClick={() => {
+        {isLoggedIn ? (
+          <NavLink to="/" className={classes.registerLink} onClick={() => {
             logOut();
-            refreshPage()
+            setIsLoggedIn(!isLoggedIn);
           }
           }>
             <Typography>Sign out</Typography>
           </NavLink>
         ) : (
-            <NavLink to="/signin" className={classes.navlink}>
-              <Typography>Sign In</Typography>
+            <NavLink to="/signin" className={classes.registerLink}>
+              <Typography>Login</Typography>
             </NavLink>
           )}
 
-
-        <NavLink to="/postitem" className={classes.navlink}>
-          <Button variant="contained" color="primary">Post Ad</Button>
+        <NavLink to="/adminpanel" className={classes.navlink}>
+          <Button variant="contained" color="secondary">Dashboard</Button>
         </NavLink>
-
       </Toolbar>
 
     </TopNav>

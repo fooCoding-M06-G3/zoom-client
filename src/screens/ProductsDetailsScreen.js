@@ -19,6 +19,11 @@ export default function ProductsDetailsScreen(props) {
 
 
   return (
-    <ProductsDetailsComponent items={product} />
+    <>
+      {
+        product.length === 0 ? <div style={{ minHeight: '62vh' }}><h1>No Item found</h1></div> :
+          < ProductsDetailsComponent items={product} />
+      }
+    </>
   )
 }

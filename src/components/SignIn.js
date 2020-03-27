@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom'
 import { Card, CardContent, Button, Typography } from '@material-ui/core';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
@@ -48,6 +48,10 @@ function SignIn() {
     id: false
   });
 
+  useEffect(() => {
+    values.id && window.location.reload();
+  }, [values.id])
+
   const handleOnChange = event => {
 
     const { id, value } = event.target;
@@ -62,22 +66,23 @@ function SignIn() {
       .then(res => res.json())
       .then(result => {
         console.log(result[0])
-        if (result[0] === undefined) {
-          setValues({ error: true })
-        } else {
-          localStorage.setItem('userId', result[0].userid);
-          setValues({ id: true })
 
-        }
+        localStorage.setItem('userId', result[0].userid);
+        values.id = true
+        setValues({ ...values })
+
+      })
+      .catch(err => {
+        values.error = true
+        setValues({ ...values });
       })
   };
 
   const classes = useStyles();
 
-
+  console.log('Farhan >>>>>>', values)
   return (
-
-    localStorage.getItem('userId') !== null ? <Redirect to='/postitem' /> :
+    localStorage.getItem('userId') !== null ? <Redirect to='/adminpanel' /> :
 
       <Card className={classes.card} >
 

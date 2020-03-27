@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Card, CardActionArea, CardContent, CardMedia, Typography, Divider } from '@material-ui/core';
+import { Card, CardContent, CardMedia, Typography, Divider } from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
     width: '50vw',
-    marginTop: '10vh',
+    marginTop: '5vh',
     marginLeft: '10vw',
 
   },
@@ -28,6 +28,7 @@ const useStyles = makeStyles({
     textAlign: 'left',
     marginTop: 20,
     fontSize: '1.5em',
+    color: 'green'
   },
   city: {
     fontSize: '1.3em',
@@ -58,7 +59,7 @@ export default function ProductsDetailsComponent({ items }) {
       return (
         <Card className={classes.root} elevation={0}>
 
-          <CardMedia className={classes.media} image={item.url} />
+          <CardMedia className={classes.media} image={item.imageurl_1} />
           <CardContent className={classes.details}>
             <Typography className={classes.city}>
               {item.city}

@@ -38,10 +38,11 @@ export default function ProductList(props) {
         return (
           <ProductCard
             id={item.productid}
-            src={item.image}
+            src={item.imageurl_1}
             name={item.title}
             city={item.cityname}
             price={item.price}
+            date={item.date}
           />
         );
       })}

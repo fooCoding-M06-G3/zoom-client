@@ -64,6 +64,7 @@ export default function PostItemComponent() {
     image: '',
     city: '',
     sold: false,
+    isPosted: ''
   });
 
   const [categories, setCategories] = useState([])
@@ -74,7 +75,7 @@ export default function PostItemComponent() {
   })
 
   const fetchCategories = () => {
-    fetch('/getCategories')
+    fetch('/getSubCategories')
       .then(resp => resp.json())
       .then(data => {
         setCategories(data)
@@ -136,7 +137,17 @@ export default function PostItemComponent() {
         'Content-Type': 'multipart/form-data'
       }
     })
-      .then(resp => console.log(resp))
+      .then(resp => {
+        console.log(resp)
+        if (resp.status === 200) {
+          values.isPosted = true;
+          setValues({ ...values })
+        }
+        else {
+          values.isPosted = false;
+          setValues({ ...values })
+        }
+      })
   };
 
 
@@ -148,10 +159,10 @@ export default function PostItemComponent() {
     localStorage.getItem('userId') === null ? <Redirect to='/signin' /> :
 
       <div style={{
-        width: '50%', marginLeft: 'auto', marginRight: 'auto', backgroundColor: '#FFF'
+        width: '50%', marginLeft: 'auto', marginRight: 'auto', marginBottom: '1vh', backgroundColor: '#FFF'
       }}>
         <div style={{
-          marginTop: '10vh', width: '50%', marginLeft: 10
+          marginTop: '5vh', width: '50%', marginLeft: 10
         }}>
 
           <ValidatorForm className={classes.root} onSubmit={event => handleSubmit(event)} >
@@ -174,11 +185,12 @@ export default function PostItemComponent() {
               variant='outlined'
               id="selectedCategory"
               select
+              required
               value={values.selectedCategory}
               onChange={handleOnChange} >
               <option value='' >Select Category </option>
               {categories.map((category, i) => {
-                return <option value={category.categoryname} key={i}>{category.categoryname}</option>
+                return <option value={category.subcategoryid} key={i}>{category.subcategoryname}</option>
               })}
 
             </select>
@@ -200,6 +212,7 @@ export default function PostItemComponent() {
               variant='outlined'
               id="selectedCity"
               select
+              required
               value={values.selectedCity}
               onChange={handleOnChange} >
               <option value='' >Select Place </option>
@@ -210,8 +223,7 @@ export default function PostItemComponent() {
             </select>
             <br />
 
-            <InputLabel style={{ textAlign: 'left', marginTop: 20, marginLeft: 10 }} >Pictures</InputLabel>
-
+            <InputLabel style={{ textAlign: 'left', marginTop: 20, marginLeft: 10, color: 'red' }} >* Minimum 1 picture is required</InputLabel>
             <br />
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
 
@@ -226,7 +238,8 @@ export default function PostItemComponent() {
                       accept="image/*"
                       elevation={0}
                       onChange={handleImageChange}
-                      multiple
+                      validators={['required']}
+                      errorMessages={['image is required']}
                     />
                     <Fab component="span" aria-label="add" > <AddAPhotoIcon /></Fab>
                   </label>
@@ -309,6 +322,9 @@ export default function PostItemComponent() {
             <Button type="submit" variant="filled outlined" className={classes.submitButton}>
               Post Ad
           </Button>
+            {values.isPosted === true && <Typography style={{ color: 'green' }}>Your item posted successfully</Typography>}
+            {values.isPosted === false && <Typography color='error'>Something went wrong</Typography>}
+            <br />
           </ValidatorForm >
         </div >
       </div >
