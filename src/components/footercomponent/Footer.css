@@ -1,20 +1,84 @@
-.footer-middle {
-    background: #03396c;
-    /* background: #000000; */
-    padding-top: 1rem;
-    color: rgb(231, 225, 225);
+.footer-center {
+  margin-top: 10px;
+  background-color: rgb(3, 57, 108);
 
+  padding-top: 1rem;
+  /* overflowx: hidden; */
+}
+
+.footer-white {
+
+  color: rgb(231, 225, 225);
+  font-style: italic;
+  font-size: large;
+  text-decoration: none;
+}
+
+.footer-white:hover {
+
+  color: rgb(231, 225, 225);
+  font-style: italic;
+  font-size: large;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.footer-style {
+  list-style-type: none;
+  margin: 0.1rem;
+
+}
+
+/* h3 {
+  font-style: normal;
+  font-size: large;
+  color: rgb(231, 225, 225);
+} */
+
+h3 {
+
+  font-style: italic;
+  font-size: large;
+  color: rgb(231, 225, 225);
 }
 
 .footer-bottom {
-    padding-top: 0.8rem;
-    padding-bottom: 0.3rem;
+  color: rgb(231, 225, 225);
+  padding-top: 0.8rem;
+  padding-bottom: 0.3rem;
+  font-style: italic;
 }
 
-ul li a {
-    color: var(--mainGrey);
+
+
+
+
+
+
+/* footerSections {
+    margin: "10px 16px"
 }
 
-ul li a:hover {
-    color: var(--mainLightGrey);
+
+subFooter {
+    // backgroundColor: "rgba(0, 0, 0, 0.15)",
+    backgroundColor: "rgb(3, 57, 108)",
+        padding: "4px 16px 8px 16px",
+        marginTop: "5px"
 }
+
+,
+footerText {
+    color: "rgb(231, 225, 225)",
+        fontSize: "18px",
+        lineHeight: 1.5
+}
+
+,
+
+
+
+,
+flexContainer {
+    display: "flex"
+} */

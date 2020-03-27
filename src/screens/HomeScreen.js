@@ -28,7 +28,6 @@ export default function HomeScreen() {
       <Typography variant="h5"> Recently Published </Typography>
       <br />
       <ProductScreen items={items} isLoading={loading} />
-
     </Fragment>
   );
 }

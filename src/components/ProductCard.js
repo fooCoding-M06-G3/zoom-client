@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@material-ui/core';
 import { formatDistanceStrict } from 'date-fns/esm'
@@ -38,6 +38,7 @@ const useStyles = makeStyles({
     textAlign: 'left',
     color: '#CCC'
   }
+
 });
 
 export default function ProductCard({ id, src, name, price, city, date }) {
@@ -53,10 +54,15 @@ export default function ProductCard({ id, src, name, price, city, date }) {
 
 
   return (
-    <Link to={{
-      pathname: `/item/${id}&${name}`, details: { id }
-    }} style={{ textDecoration: 'none' }} onClick={() => localStorage.setItem('productId', id)} >
-      <Card className={classes.root} >
+    <Link
+      to={{
+        pathname: `/item/${id}&${name}`,
+        details: { id },
+      }}
+      style={{ textDecoration: 'none' }}
+      onClick={() => localStorage.setItem('productId', id)}
+    >
+      <Card className={classes.root}>
         <CardActionArea>
 
           <CardMedia className={classes.media} image={src} />
@@ -69,6 +75,7 @@ export default function ProductCard({ id, src, name, price, city, date }) {
               <Typography className={classes.price}>
                 {price} SEK
               </Typography>
+
             </div>
 
             <Typography className={classes.time}>
@@ -79,5 +86,5 @@ export default function ProductCard({ id, src, name, price, city, date }) {
         </CardActionArea>
       </Card>
     </Link>
-  )
+  );
 }

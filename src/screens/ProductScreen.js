@@ -3,7 +3,7 @@ import "../App.css";
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 
-import ProductCard from '../components/ProductCard'
+import ProductCard from '../components/ProductCard';
 
 export default function ProductScreen({ items, isLoading }) {
 
@@ -16,5 +16,5 @@ export default function ProductScreen({ items, isLoading }) {
         items.map(item => <ProductCard name={item.title} src={item.imageurl_1} price={item.price} city={item.city} id={item.productid} date={item.date} />)}
 
     </div>
-  )
+  );
 }

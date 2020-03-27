@@ -12,6 +12,7 @@ import ProductsDetailsScreen from "./screens/ProductsDetailsScreen";
 import AdminScreen from "./screens/AdminScreen";
 import EditPostComponent from "./components/EditPostComponent";
 import Footer from "./components/footercomponent/Footer";
+import SubCategoryProductListScreen from './screens/SubCategoryProductListScreen';
 
 
 function App() {
@@ -62,6 +63,7 @@ function App() {
         <Footer />
       </Router>
     </>
+
   );
 }
 

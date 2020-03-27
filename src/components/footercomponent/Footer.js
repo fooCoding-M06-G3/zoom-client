@@ -1,86 +1,87 @@
 import React from "react";
 import "./Footer.css";
+import Grid from "@material-ui/core/Grid";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <div className="main-footer">
-      <div className="footer-middle">
-        <div className="container">
-          <div className="row">
-            {/* Column 1 */}
-            <div className="col-md-3 col-sm-6">
-              <h4>Security</h4>
-              <ul className="list-unstyled">
-                <li>
-                  <a href="/">Customer Safety</a>
-                </li>
-                <li>
-                  <a href="/">Fake mail</a>
-                </li>
-                <li>
-                  <a href="/">Report disruptive advertising</a>
-                </li>
-              </ul>
-            </div>
-            {/* Column 2 */}
-            <div className="col-md-3 col-sm-6">
-              <h4>For Companies</h4>
-              <ul className="list-unstyled">
-                <li>
-                  <a href="/">Open shop</a>
-                </li>
-                <li>
-                  <a href="/">View all stores</a>
-                </li>
-                <li>
-                  <a href="/">Marketing</a>
-                </li>
-                <li>
-                  <a href="/">Login for stores</a>
-                </li>
-              </ul>
-            </div>
-            {/* Column 3 */}
-            <div className="col-md-3 col-sm-6">
-              <h4>Terms</h4>
-              <ul className="list-unstyled">
-                <li>
-                  <a href="/">Terms of Use</a>
-                </li>
-                <li>
-                  <a href="/">Privacy Policy</a>
-                </li>
-                <li>
-                  <a href="/">Cookies</a>
-                </li>
-              </ul>
-            </div>
-            {/* Column 4 */}
-            <div className="col-md-3 col-sm-6">
-              <h4>The Zoom</h4>
-              <ul className="list-unstyled">
-                <li>
-                  <a href="/">About the Zoom</a>
-                </li>
-                <li>
-                  <a href="/">Work on the Zoom</a>
-                </li>
-                <li>
-                  <a href="/">Contact Us</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          {/* Footer Bottom */}
-          <div className="footer-bottom">
-            <p className="text-xs-center">
-              &copy;{new Date().getFullYear()} zoom market place App - All
-              Rights Reserved
-            </p>
-          </div>
+    <div className="footer-center ">
+      <Grid
+        container
+        spacing={0}
+        // className={classNames(classes.footerText, classes.footerSections)}
+      >
+        <Grid item xs={6} sm={3}>
+          <ul className="footer-style">
+            <h3>Security</h3>
+            <li>
+              <a className="footer-white">Customer Safety</a>
+            </li>
+            <li>
+              <a className="footer-white">Fake mail</a>
+            </li>
+            <li>
+              <a className="footer-white">Report disruptive advertising</a>
+            </li>
+          </ul>
+        </Grid>
+        <Grid item xs={6} sm={3}>
+          <h3>For Companies</h3>
+          <ul className="footer-style">
+            <li>
+              <a className="footer-white">Open shop</a>
+            </li>
+            <li>
+              <a className="footer-white">View all stores</a>
+            </li>
+            <li>
+              <a className="footer-white">Marketing</a>
+            </li>
+            <li>
+              <a className="footer-white">Login for stores</a>
+            </li>
+          </ul>
+        </Grid>
+        <Grid item xs={6} sm={3}>
+          <h3>Terms</h3>
+          <ul className="footer-style">
+            <li>
+              <a className="footer-white">Privacy Policy</a>
+            </li>
+            <li>
+              <a className="footer-white">Terms of Use</a>
+            </li>
+            <li>
+              <a className="footer-white">Cookies</a>
+            </li>
+          </ul>
+        </Grid>
+        <Grid item xs={6} sm={3}>
+          <h3>The Zoom</h3>
+          <ul className="footer-style">
+            <li>
+              <a className="footer-white">About the Zoom</a>
+            </li>
+            <li>
+              <a className="footer-white">Work on the Zoom</a>
+            </li>
+            <li>
+              <a className="footer-white">Contact us </a>
+            </li>
+          </ul>
+        </Grid>
+      </Grid>
+
+      <Grid>
+        <div className="footer-bottom">
+          <p className="text-xs-center">
+            &copy;{new Date().getFullYear()} zoom market place App - All Rights
+            Reserved
+          </p>
         </div>
-      </div>
+      </Grid>
     </div>
   );
 }
+
 export default Footer;

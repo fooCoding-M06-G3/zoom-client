@@ -7,7 +7,6 @@ const useStyles = makeStyles({
     width: '50vw',
     marginTop: '5vh',
     marginLeft: '10vw',
-
   },
   media: {
     height: '55vh',
@@ -22,7 +21,7 @@ const useStyles = makeStyles({
   title: {
     textAlign: 'left',
     paddingBottom: 20,
-    marginTop: 20
+    marginTop: 20,
   },
   price: {
     textAlign: 'left',
@@ -36,23 +35,16 @@ const useStyles = makeStyles({
     textAlign: 'left',
   },
   description: {
-
     fontSize: '1.2em',
     textAlign: 'left',
     color: '#424242',
     marginTop: 20,
-    lineHeight: 2
-
-  }
-
-
+    lineHeight: 2,
+  },
 });
 
 export default function ProductsDetailsComponent({ items }) {
-
-
   const classes = useStyles();
-
 
   return (
     items.map(item => {
