@@ -1,43 +1,29 @@
-.footer-center {
-  margin-top: 10px;
+.footer {
+  margin: auto;
   background-color: rgb(3, 57, 108);
-
-  padding-top: 1rem;
-  /* overflowx: hidden; */
+  padding-left: 10vw;
+  padding-top: 2vh;
 }
 
-.footer-white {
+ul {
+  list-style: none;
 
-  color: rgb(231, 225, 225);
-  font-style: italic;
-  font-size: large;
-  text-decoration: none;
 }
 
-.footer-white:hover {
-
-  color: rgb(231, 225, 225);
-  font-style: italic;
-  font-size: large;
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-.footer-style {
-  list-style-type: none;
+.footer-style a {
+  color: white;
+  list-style: none;
   margin: 0.1rem;
-
 }
 
-/* h3 {
-  font-style: normal;
-  font-size: large;
-  color: rgb(231, 225, 225);
-} */
+.footer-style a:hover {
+  color: white;
+  margin: 0.1rem;
+  cursor: pointer;
+
+}
 
 h3 {
-
-  font-style: italic;
   font-size: large;
   color: rgb(231, 225, 225);
 }
@@ -46,39 +32,4 @@ h3 {
   color: rgb(231, 225, 225);
   padding-top: 0.8rem;
   padding-bottom: 0.3rem;
-  font-style: italic;
 }
-
-
-
-
-
-
-
-/* footerSections {
-    margin: "10px 16px"
-}
-
-
-subFooter {
-    // backgroundColor: "rgba(0, 0, 0, 0.15)",
-    backgroundColor: "rgb(3, 57, 108)",
-        padding: "4px 16px 8px 16px",
-        marginTop: "5px"
-}
-
-,
-footerText {
-    color: "rgb(231, 225, 225)",
-        fontSize: "18px",
-        lineHeight: 1.5
-}
-
-,
-
-
-
-,
-flexContainer {
-    display: "flex"
-} */
