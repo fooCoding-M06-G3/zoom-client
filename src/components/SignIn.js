@@ -62,7 +62,7 @@ function SignIn() {
 
   const handleSubmit = event => {
     event.preventDefault();
-    fetch(`/getuser?email=${values.email}&password=${values.password}`)
+    fetch(`https://api-zoom.herokuapp.com/getuser?email=${values.email}&password=${values.password}`)
       .then(res => res.json())
       .then(result => {
         console.log(result[0])
@@ -80,7 +80,7 @@ function SignIn() {
 
   const classes = useStyles();
 
-  console.log('Farhan >>>>>>', values)
+
   return (
     localStorage.getItem('userId') !== null ? <Redirect to='/adminpanel' /> :
 

@@ -8,7 +8,7 @@ export default function HomeScreen() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch("/getProducts")
+    fetch("https://api-zoom.herokuapp.com/getProducts")
       .then(response => response.json())
       .then(products => {
         setItems(products);

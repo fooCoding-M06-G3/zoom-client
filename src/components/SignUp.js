@@ -64,7 +64,7 @@ export default function SignUp() {
       password: values.password,
       tel: values.tel
     }
-    fetch('/register', {
+    fetch('https://api-zoom.herokuapp.com/register', {
       method: 'POST',
       body: JSON.stringify(data),
       headers: { 'Content-Type': 'application/json', }

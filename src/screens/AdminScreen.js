@@ -11,7 +11,7 @@ export default function AdminScreen() {
 
 
   useEffect(() => {
-    fetch(`/getUsersItems?id=${localStorage.getItem('userId')}`)
+    fetch(`https://api-zoom.herokuapp.com/getUsersItems?id=${localStorage.getItem('userId')}`)
       .then(response => response.json())
       .then(products => {
         setItems(products);
@@ -19,7 +19,7 @@ export default function AdminScreen() {
   }, []);
 
   useEffect(() => {
-    fetch(`/getUsersItems?id=${localStorage.getItem('userId')}`)
+    fetch(`https://api-zoom.herokuapp.com/getUsersItems?id=${localStorage.getItem('userId')}`)
       .then(response => response.json())
       .then(products => {
         setItems(products);
@@ -28,7 +28,7 @@ export default function AdminScreen() {
 
 
   const handleDelete = (e, id, images) => {
-    fetch(`/deleteUserItem?id=${id}`, {
+    fetch(`https://api-zoom.herokuapp.com/deleteUserItem?id=${id}`, {
       method: 'DELETE',
       body: JSON.stringify(images),
       headers: { 'Content-Type': 'application/json', }

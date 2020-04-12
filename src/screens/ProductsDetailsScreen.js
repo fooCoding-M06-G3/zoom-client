@@ -10,7 +10,7 @@ export default function ProductsDetailsScreen(props) {
   const [product, setProduct] = useState([]);
 
   useEffect(() => {
-    fetch(`/getproduct?id=${postId}`)
+    fetch(`https://api-zoom.herokuapp.com/getproductdetails?id=${postId}`)
       .then(response => response.json())
       .then(result => {
         setProduct(result)

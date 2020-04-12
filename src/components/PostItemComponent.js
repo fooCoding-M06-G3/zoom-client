@@ -75,7 +75,7 @@ export default function PostItemComponent() {
   })
 
   const fetchCategories = () => {
-    fetch('/getSubCategories')
+    fetch('https://api-zoom.herokuapp.com/getSubCategories')
       .then(resp => resp.json())
       .then(data => {
         setCategories(data)

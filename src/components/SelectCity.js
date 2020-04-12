@@ -42,7 +42,7 @@ const SelectCity = props => {
   const classes = useStyles();
   const theme = useTheme();
   useEffect(() => {
-    fetch('/getCities')
+    fetch('https://api-zoom.herokuapp.com/getCities')
       .then(response => response.json())
       .then(cities => {
         let newCities = cities.map(city => city.cityname);
