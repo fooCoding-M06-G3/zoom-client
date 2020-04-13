@@ -75,16 +75,17 @@ export default function PostItemComponent() {
   })
 
   const fetchCategories = () => {
-    fetch('https://api-zoom.herokuapp.com/getSubCategories')
+    fetch('https://api-zoom.herokuapp.com/getCategories')
       .then(resp => resp.json())
       .then(data => {
+        console.log(data)
         setCategories(data)
 
       })
   }
 
   const fetchCities = () => {
-    fetch('/getCities')
+    fetch('https://api-zoom.herokuapp.com/getCities')
       .then(resp => resp.json())
       .then(data => {
         setCities(data)
@@ -132,7 +133,7 @@ export default function PostItemComponent() {
     data.append('city', values.selectedCity)
     data.append('desc', values.description)
 
-    axios.post('/postitem', data, {
+    axios.post('https://api-zoom.herokuapp.com/postitem', data, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
@@ -190,7 +191,7 @@ export default function PostItemComponent() {
               onChange={handleOnChange} >
               <option value='' >Select Category </option>
               {categories.map((category, i) => {
-                return <option value={category.subcategoryid} key={i}>{category.subcategoryname}</option>
+                return <option value={category.categoryid} key={i}>{category.categoryname}</option>
               })}
 
             </select>

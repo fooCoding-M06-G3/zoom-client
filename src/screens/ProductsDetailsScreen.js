@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ProductsDetailsComponent from '../components/ProductsDetailsComponent'
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 export default function ProductsDetailsScreen(props) {
 
@@ -21,7 +22,7 @@ export default function ProductsDetailsScreen(props) {
   return (
     <>
       {
-        product.length === 0 ? <div style={{ minHeight: '62vh' }}><h1>No Item found</h1></div> :
+        product.length === 0 ? <div style={{ minHeight: '62vh' }}>{CircularProgress}</div> :
           < ProductsDetailsComponent items={product} />
       }
     </>

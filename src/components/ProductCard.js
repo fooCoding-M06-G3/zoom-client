@@ -8,10 +8,10 @@ const dateTime = require('date-time');
 const useStyles = makeStyles({
   root: {
     width: '20vw',
-    margin: 15,
+    margin: 10,
   },
   media: {
-    height: '35vh',
+    height: '40vh',
     width: '100%',
   },
   details: {

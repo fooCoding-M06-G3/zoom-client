@@ -25,7 +25,7 @@ const SelectSubCategory = props => {
   const [selectedSubCategory, setSelectedSubCategory] = useState('');
 
   const fetchSubCategories = async () => {
-    const response = await fetch('/getSubCategories', {
+    const response = await fetch('/getsubcategories', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

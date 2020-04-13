@@ -74,7 +74,7 @@ export default function EditPostComponent(props) {
   })
 
   const fetchProduct = () => {
-    fetch(`/getitembyid?id=${props.location.state.id}`)
+    fetch(`https://api-zoom.herokuapp.com/getitembyid?id=${props.location.state.id}`)
       .then(res => res.json())
       .then(data => {
         console.log(data)
@@ -92,7 +92,7 @@ export default function EditPostComponent(props) {
   }
 
   const fetchCategories = () => {
-    fetch('/getCategories')
+    fetch('https://api-zoom.herokuapp.com/getCategories')
       .then(resp => resp.json())
       .then(data => {
         setCategories(data)
@@ -101,7 +101,7 @@ export default function EditPostComponent(props) {
   }
 
   const fetchCities = () => {
-    fetch('/getCities')
+    fetch('https://api-zoom.herokuapp.com/getCities')
       .then(resp => resp.json())
       .then(data => {
         setCities(data)
@@ -149,7 +149,7 @@ export default function EditPostComponent(props) {
     data.append('city', values.selectedCity)
     data.append('desc', values.description)
 
-    axios.put(`/updatepost?id=${values.productId}`, data, {
+    axios.put(`https://api-zoom.herokuapp.com/updatepost?id=${values.productId}`, data, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
