@@ -11,7 +11,7 @@ export default function AdminScreen() {
 
 
   useEffect(() => {
-    fetch(`https://api-zoom.herokuapp.com/getUsersItems?id=${localStorage.getItem('userId')}`)
+    fetch(`https://api-zoom.herokuapp.com/getitemsbyuserid?id=${localStorage.getItem('userId')}`)
       .then(response => response.json())
       .then(products => {
         setItems(products);
@@ -19,7 +19,7 @@ export default function AdminScreen() {
   }, []);
 
   useEffect(() => {
-    fetch(`https://api-zoom.herokuapp.com/getUsersItems?id=${localStorage.getItem('userId')}`)
+    fetch(`https://api-zoom.herokuapp.com/getitemsbyuserid?id=${localStorage.getItem('userId')}`)
       .then(response => response.json())
       .then(products => {
         setItems(products);

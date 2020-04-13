@@ -8,10 +8,10 @@ const dateTime = require('date-time');
 const useStyles = makeStyles({
   root: {
     width: '20vw',
-    margin: 15,
+    margin: 10,
   },
   media: {
-    height: '35vh',
+    height: '40vh',
     width: '100%',
   },
   details: {
@@ -57,7 +57,7 @@ export default function ProductCard({ id, src, name, price, city, date }) {
     <Link
       to={{
         pathname: `/item/${id}&${name}`,
-        details: { id },
+        state: { id },
       }}
       style={{ textDecoration: 'none' }}
       onClick={() => localStorage.setItem('productId', id)}

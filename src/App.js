@@ -35,28 +35,13 @@ function App() {
           <div className="mainContent">
 
             <Route exact path="/item/:id" component={ProductsDetailsScreen} />
-            <Route exact path="/signin">
-              <SignInScreen />
-            </Route>
-            <Route exact path="/signup">
-              <SignUpScreen />
-            </Route>
-            <Route exact path="/postitem">
-              <PostItemScreen />
-            </Route>
-            <Route exact path="/editpost" component={EditPostComponent}>
-            </Route>
-            <Route exact path="/adminpanel">
-              <AdminScreen />
-            </Route>
-            <Route exact path="/">
-              <HomeScreen />
-            </Route>
-            <Route
-              exact
-              path="/productList"
-              component={ProductListScreen}
-            ></Route>
+            <Route exact path="/signin" component={SignInScreen} />
+            <Route exact path="/signup" component={SignUpScreen} />
+            <Route exact path="/postitem" component={PostItemScreen} />
+            <Route exact path="/editpost" component={EditPostComponent} />
+            <Route exact path="/adminpanel" component={AdminScreen} />
+            <Route exact path="/" component={HomeScreen} />
+            <Route exact path="/productList" component={ProductListScreen} />
 
           </div>
         </Switch>

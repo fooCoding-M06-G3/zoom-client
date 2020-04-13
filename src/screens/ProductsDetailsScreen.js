@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import ProductsDetailsComponent from '../components/ProductsDetailsComponent'
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 export default function ProductsDetailsScreen(props) {
 
-  console.log(props.match.params.id);
 
-  const postId = props.match.params.id
+
+  const postId = props.location.state.id
+  console.log(postId);
 
   const [product, setProduct] = useState([]);
 
@@ -13,6 +15,7 @@ export default function ProductsDetailsScreen(props) {
     fetch(`https://api-zoom.herokuapp.com/getproductdetails?id=${postId}`)
       .then(response => response.json())
       .then(result => {
+        console.log(result)
         setProduct(result)
       })
   }, [])
@@ -21,7 +24,7 @@ export default function ProductsDetailsScreen(props) {
   return (
     <>
       {
-        product.length === 0 ? <div style={{ minHeight: '62vh' }}><h1>No Item found</h1></div> :
+        product.length === 0 ? <div style={{ minHeight: '62vh' }}>No Items found</div> :
           < ProductsDetailsComponent items={product} />
       }
     </>

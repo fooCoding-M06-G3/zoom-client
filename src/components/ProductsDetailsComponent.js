@@ -6,7 +6,7 @@ const useStyles = makeStyles({
   root: {
     width: '50vw',
     marginTop: '5vh',
-    marginLeft: '10vw',
+    marginLeft: '25vw',
   },
   media: {
     height: '55vh',
@@ -68,10 +68,16 @@ export default function ProductsDetailsComponent({ items }) {
             <Typography className={classes.description} >
               {item.description}
             </Typography>
+            <br />
+            <Divider />
+            <br />
+            <Typography className={classes.city}>
+              Contact Seller: {item.phonenumber}
+            </Typography>
 
           </CardContent>
 
-        </Card>
+        </Card >
       )
     }
     ))
