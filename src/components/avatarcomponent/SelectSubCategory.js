@@ -19,23 +19,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const SelectSubCategory = props => {
+  console.log(props)
   const classes = useStyles();
   const [value, setValue] = useState(null);
   const [subCategory, setSubCategory] = useState([]);
   const [selectedSubCategory, setSelectedSubCategory] = useState('');
-
-  const fetchSubCategories = async () => {
-    const response = await fetch('/getsubcategories', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ category: props.categoryid }),
-    });
-    const json = await response.json();
-    setSubCategory(json);
-    setValue(json[0].subcategoryid);
-  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,6 +31,22 @@ const SelectSubCategory = props => {
     };
     fetchData();
   }, []);
+
+
+  const fetchSubCategories = async () => {
+    const response = await fetch('https://api-zoom.herokuapp.com/getsubcategories', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ category: props.id }),
+    });
+    const json = await response.json();
+    console.log(json)
+    setSubCategory(json);
+    setValue(json[0].sub_categoryid);
+  };
+
 
   const handleChange = event => {
     setSelectedSubCategory(event.target.value);
@@ -62,9 +66,9 @@ const SelectSubCategory = props => {
     <Fragment>
       <FormControl className={classes.formControl}>
         <Select value={value} onChange={handleChange} autoFocus className={classes.selectEmpty}>
-          {subCategory.map(item => (
-            <MenuItem key={item.subcategoryid} value={item.subcategoryid} selected>
-              {item.subcategoryname}
+          {subCategory.map((item, i) => (
+            <MenuItem key={i} value={item.sub_categoryid} selected>
+              {item.sub_categoryname}
             </MenuItem>
           ))}
         </Select>

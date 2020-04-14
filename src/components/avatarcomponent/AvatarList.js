@@ -35,7 +35,7 @@ const Avatarlist = props => {
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Select sub-category</DialogTitle>
         <DialogContent>
-          <SelectSubCategory id={props.id} name={props.name} categoryid={props.categoryid} />
+          <SelectSubCategory id={props.id} name={props.name} />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">

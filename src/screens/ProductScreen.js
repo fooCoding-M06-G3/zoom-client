@@ -13,7 +13,7 @@ export default function ProductScreen({ items, isLoading }) {
     <div className='productContent'>
       {isLoading === true ? <CircularProgress /> :
 
-        items.map(item => <ProductCard name={item.title} src={item.imageurl_1} price={item.price} city={item.city} id={item.productid} date={item.date} />)}
+        items.map((item, i) => <ProductCard key={i} name={item.title} src={item.imageurl_1} price={item.price} city={item.city} id={item.productid} date={item.date} />)}
 
     </div>
   );

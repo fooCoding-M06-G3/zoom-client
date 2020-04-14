@@ -34,7 +34,7 @@ function App() {
         <Switch>
           <div className="mainContent">
 
-            <Route exact path="/item/:id" component={ProductsDetailsScreen} />
+            <Route exact path="/item/:id/:title" component={ProductsDetailsScreen} />
             <Route exact path="/signin" component={SignInScreen} />
             <Route exact path="/signup" component={SignUpScreen} />
             <Route exact path="/postitem" component={PostItemScreen} />

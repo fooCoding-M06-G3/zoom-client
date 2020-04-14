@@ -57,10 +57,10 @@ const Avatar = props => {
   const arrayavatarcard = avatarlistarray.map((avatarcard, i) => {
     return (
       <Avatarlist
-        id={avatarlistarray[i].name}
+        id={avatarlistarray[i].categoryid}
         src={avatarlistarray[i].src}
         name={avatarlistarray[i].name}
-        categoryid={avatarlistarray[i].categoryid}
+        key={i}
       />
     );
   });

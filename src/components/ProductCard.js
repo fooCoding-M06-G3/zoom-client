@@ -51,12 +51,12 @@ export default function ProductCard({ id, src, name, price, city, date }) {
     new Date(postDate),
     new Date(dateTime())
   )
-
+  const title = name.replace(/ /g, '_');
 
   return (
     <Link
       to={{
-        pathname: `/item/${id}&${name}`,
+        pathname: `/item/${id}/${title}`,
         state: { id },
       }}
       style={{ textDecoration: 'none' }}

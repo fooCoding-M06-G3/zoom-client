@@ -6,8 +6,9 @@ export default function ProductsDetailsScreen(props) {
 
 
 
-  const postId = props.location.state.id
-  console.log(postId);
+  const postId = window.location.pathname.split('/')[2];
+  // console.log(props.location.state.id);
+  console.log('id', postId);
 
   const [product, setProduct] = useState([]);
 
@@ -18,6 +19,7 @@ export default function ProductsDetailsScreen(props) {
         console.log(result)
         setProduct(result)
       })
+
   }, [])
 
 
