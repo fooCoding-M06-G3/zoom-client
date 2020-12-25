@@ -40,6 +40,7 @@ export default function SignUp() {
 
 
   const [values, setValues] = useState({
+    username: '',
     email: '',
     password: '',
     tel: '',
@@ -58,6 +59,7 @@ export default function SignUp() {
   const handleSubmit = event => {
     event.preventDefault();
     const data = {
+      username: values.username,
       email: values.email,
       password: values.password,
       tel: values.tel
@@ -70,8 +72,9 @@ export default function SignUp() {
     })
       .then(res => res.json())
       .then(result => {
-        console.log(result.sqlMessage)
-        setValues({ msg: result.sqlMessage })
+        console.log(result.sqlMessage);
+        values.msg = result.sqlMessage
+        setValues({ ...values })
       })
   };
 
@@ -93,24 +96,35 @@ export default function SignUp() {
           {values.error && <Typography className={classes.error}>Email/Password Invalid</Typography>}
           <TextValidator
             variant='outlined'
+            type='username'
+            id='username'
+            placeholder='User Name'
+            value={values.username}
+            onChange={handleOnChange}
+            validators={['required']}
+            errorMessages={['This field is required']}
+          />
+          <br />
+          <TextValidator
+            variant='outlined'
             type='email'
             id='email'
             placeholder='Email'
             value={values.email}
             onChange={handleOnChange}
             validators={['required', 'isEmail']}
-            errorMessages={['this field is required', 'email is not valid']}
+            errorMessages={['This field is required', 'email is not valid']}
           />
           <br />
           <TextValidator
             variant='outlined'
             type='text'
             id='tel'
-            placeholder='Phone Number'
-            value={values.phoneNumber}
+            placeholder='Phone Number: 07xxxxxxx'
+            value={values.tel}
             onChange={handleOnChange}
-            validators={['required']}
-            errorMessages={['this field is required']}
+            validators={['required', 'matchRegexp:^\\d+$', 'minNumber:255',]}
+            errorMessages={['This field is required', 'only numbers are accepted', 'Minmum 10 digists number']}
           />
           <br />
           <TextValidator
@@ -122,7 +136,7 @@ export default function SignUp() {
             value={values.password}
             onChange={handleOnChange}
             validators={['required']}
-            errorMessages={['this field is required']}
+            errorMessages={['This field is required']}
           />
 
           <br />

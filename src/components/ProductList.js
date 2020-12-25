@@ -44,7 +44,8 @@ export default function ProductList(props) {
             name={item.title}
             city={item.city}
             price={item.price}
-            date={dateFormat}
+            date={item.date}
+
           />
         );
       })}

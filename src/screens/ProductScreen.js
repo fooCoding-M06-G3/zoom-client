@@ -1,25 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import "../App.css";
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 
 import ProductCard from '../components/ProductCard';
 
-export default function ProductScreen({ items }) {
-  console.log(items);
+export default function ProductScreen({ items, isLoading }) {
+
+  console.log(items)
+
   return (
-    <div className="productContent">
-      {items.map(item => {
-        let newDate = item.date;
-        let dateFormat = newDate.slice(0, 10);
-        return (
-          <ProductCard
-            name={item.title}
-            src={item.imageurl_1}
-            price={item.price}
-            city={item.city}
-            date={dateFormat}
-            id={item.productid}
-          />
-        );
-      })}
+    <div className='productContent'>
+      {isLoading === true ? <CircularProgress /> :
+
+        items.map(item => <ProductCard name={item.title} src={item.imageurl_1} price={item.price} city={item.city} id={item.productid} date={item.date} />)}
+
     </div>
   );
 }

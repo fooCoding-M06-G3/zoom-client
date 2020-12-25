@@ -1,72 +1,67 @@
 import React from "react";
 import "./Footer.css";
 import Grid from "@material-ui/core/Grid";
-import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <div className="footer-center ">
-      <Grid
-        container
-        spacing={0}
-        // className={classNames(classes.footerText, classes.footerSections)}
-      >
-        <Grid item xs={6} sm={3}>
+    <div className="footer">
+      <Grid container spacing={1} >
+        <Grid item xs>
           <ul className="footer-style">
             <h3>Security</h3>
             <li>
-              <a className="footer-white">Customer Safety</a>
+              <a href="#">Customer Safety</a>
             </li>
             <li>
-              <a className="footer-white">Fake mail</a>
+              <a href="#">Fake mail</a>
             </li>
             <li>
-              <a className="footer-white">Report disruptive advertising</a>
+              <a href="#">Report disruptive advertising</a>
             </li>
           </ul>
         </Grid>
-        <Grid item xs={6} sm={3}>
+        <Grid item xs>
           <h3>For Companies</h3>
           <ul className="footer-style">
             <li>
-              <a className="footer-white">Open shop</a>
+              <a href="#">Open shop</a>
             </li>
             <li>
-              <a className="footer-white">View all stores</a>
+              <a href="#">View all stores</a>
             </li>
             <li>
-              <a className="footer-white">Marketing</a>
+              <a href="#">Marketing</a>
             </li>
             <li>
-              <a className="footer-white">Login for stores</a>
+              <a href="#">Login for stores</a>
             </li>
           </ul>
         </Grid>
-        <Grid item xs={6} sm={3}>
+        <Grid item xs>
           <h3>Terms</h3>
           <ul className="footer-style">
             <li>
-              <a className="footer-white">Privacy Policy</a>
+              <a href="#">Privacy Policy</a>
             </li>
             <li>
-              <a className="footer-white">Terms of Use</a>
+              <a href="#">Terms of Use</a>
             </li>
             <li>
-              <a className="footer-white">Cookies</a>
+              <a href="#">Cookies</a>
             </li>
           </ul>
         </Grid>
-        <Grid item xs={6} sm={3}>
+        <Grid item xs>
           <h3>The Zoom</h3>
           <ul className="footer-style">
             <li>
-              <a className="footer-white">About the Zoom</a>
+              <a href="#">About the Zoom</a>
             </li>
             <li>
-              <a className="footer-white">Work on the Zoom</a>
+              <a href="#">Work on the Zoom</a>
             </li>
             <li>
-              <a className="footer-white">Contact us </a>
+              <a href="#">Contact us </a>
             </li>
           </ul>
         </Grid>
@@ -75,7 +70,7 @@ function Footer() {
       <Grid>
         <div className="footer-bottom">
           <p className="text-xs-center">
-            &copy;{new Date().getFullYear()} zoom market place App - All Rights
+            &copy;{new Date().getFullYear()} zoom marketplace - All Rights
             Reserved
           </p>
         </div>
